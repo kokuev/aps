@@ -1,4 +1,5 @@
 __author__ = 'ak'
+from sympy import latex
 
 
 def simplex_table_to_tex_table_only(table):
@@ -15,17 +16,17 @@ def simplex_table_to_tex_table_only(table):
     for i in range(table.amount_of_equations):
         ret += "$x_{" + "{0:<2}".format(table.basis[i]) + "}$"
         ret += "& \\T \\B $ "
-        ret += table.free[i].to_tex()
+        ret += latex(table.free[i])
         for j in range(table.amount_of_vars):
             ret += "$&$"
-            ret += table.limits[i][j].to_tex()
+            ret += latex(table.limits[i][j])
         ret += "$\\\\ \\hline "
 
     ret += "$\Psi$ & $"
-    ret += table.target_free.to_tex()
+    ret += latex(table.target_free)
     for j in range(table.amount_of_vars):
         ret += "$&\\T \\B$"
-        ret += table.target[j].to_tex()
+        ret += latex(table.target[j])
     ret += "$\\\\ \\hline "
 
     ret += """\\end{tabular}"""
@@ -35,8 +36,8 @@ def simplex_table_to_tex_solution_only(table):
     solution = ''
     var, target = table.solution
     for i in range(table.amount_of_vars):
-        solution += "$x_{" + "{0:<2}".format(i) + "} = " + var[i].to_tex() + '$\\\\'
-    solution += '$\Psi = ' + target.to_tex() + '$'
+        solution += "$x_{" + "{0:<2}".format(i) + "} = " + latex(var[i]) + '$\\\\'
+    solution += '$\Psi = ' + latex(target) + '$'
     return solution
 
 def simplex_table_to_tex_pots_full(table):
@@ -46,7 +47,7 @@ def simplex_table_to_tex_pots_full(table):
         for i, pot in enumerate(table.pots.pots):
             ret += 'pot \#' + str(i) + ':' + '\\\\'
             for s in pot.symbol_intervals:
-                ret += 'symbol $' + str(s) + '$ : $' + pot.symbol_intervals[s].to_tex() + "$ \\\\"
+                ret += 'symbol $' + latex(s) + '$ : $' + pot.symbol_intervals[s].to_tex() + "$ \\\\"
             for s in pot.assumptions:
                 ret += "$" + s.to_tex() + "$ \\\\"
     return ret

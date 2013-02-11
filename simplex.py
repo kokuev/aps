@@ -2,8 +2,9 @@ __author__ = 'ak'
 
 from theorypots import theorypots
 from copy import deepcopy
-from expression import expr
+#from expression import expr
 from assumption import result, assumption
+from sympy import Number
 
 def _filter_possible(assumptions):
     only_possible = list()
@@ -32,7 +33,7 @@ class simplex_table:
     def make_solution(self):
         var = list()
         for i in range(self.amount_of_vars):
-            var.append(expr(.0))
+            var.append(Number(0))
 
         for i, z in enumerate(self.basis):
             var[z] = self.free[i]
@@ -110,9 +111,11 @@ class simplex_table:
         for q in range(next.amount_of_vars):
             if q == j: continue
             next.limits[i][q] /= next.limits[i][j]
+            next.limits[i][q] = next.limits[i][q].simplify()
 
         next.free[i] /= next.limits[i][j]
-        next.limits[i][j] = expr(1.)
+        next.free[i] = next.free[i].simplify()
+        next.limits[i][j] = Number(1)
 
         for w in range(next.amount_of_equations):
             if w == i: continue
@@ -120,8 +123,11 @@ class simplex_table:
             for q in range(next.amount_of_vars):
                 if q == j: continue
                 next.limits[w][q] -= ( next.limits[i][q] * m)
+                next.limits[w][q] = next.limits[w][q].simplify()
+
             next.free[w] -= (next.free[i] * m)
-            next.limits[w][j] = expr(0.)
+            next.free[w] = next.free[w].simplify()
+            next.limits[w][j] = Number(0)
 
         next.target = self.target[:]
         next.target_free = self.target_free
@@ -130,8 +136,10 @@ class simplex_table:
         for q in range(next.amount_of_vars):
             if q == j: continue
             next.target[q] -= ( next.limits[i][q] * m)
+            next.target[q] = next.target[q].simplify()
         next.target_free -= ( next.free[i] *m)
-        next.target[j] = expr(0.)
+        next.target_free = next.target_free.simplify()
+        next.target[j] = Number(0)
 
         next.pots = pot
 
@@ -145,11 +153,11 @@ class simplex_table:
         for e in range(self.amount_of_equations):
             if i == e: continue
             alternate1.append(
-                [ assumption(self.limits[e][j], '>', expr(0.)),
+                [ assumption(self.limits[e][j], '>', Number(0)),
                   assumption(self.free[i] / self.limits[i][j] ,'<=', self.free[e] / self.limits[e][j]) ])
 
             alternate2.append(
-                [ assumption(self.limits[e][j], '<=', expr(0.)) ])
+                [ assumption(self.limits[e][j], '<=', Number(0)) ])
 
         or_assumps = list()
         size = len(alternate1)
@@ -170,7 +178,7 @@ class simplex_table:
         for i in range(self.amount_of_equations):
             if j in self.basis: continue
             assumps2 = list()
-            assumps2.append(assumption(self.limits[i][j], '>', expr(0.)))
+            assumps2.append(assumption(self.limits[i][j], '>', Number(0)))
 
             or_assumps = self.prepare_or_assumptions(i, j)
 
@@ -185,27 +193,34 @@ class simplex_table:
             yield ret
 
     def get_next_tables(self):
-        global_assumps = list()
-        has_doubts = False
+        doubt_assumpts = list()
 
         for (j, targ) in enumerate(self.target):
-            assumpt = assumption(targ, '<', expr(0.))
+            assumpt = assumption(targ, '<', Number(0))
             res = self.test_assumtions([assumpt, ])
             if res == result.not_possible: continue
-            elif res == result.correct:
-                global_assumps.append(assumpt)
-                for table in self.get_next_tables_by_row(j, deepcopy(global_assumps)):
-                    yield table
-                return
-            else:
-                has_doubts = True
-                assumps = deepcopy(global_assumps)
-                assumps.append(assumpt)
-                for table in self.get_next_tables_by_row(j, assumps):
-                    yield table
-                global_assumps.append(assumption(targ, '>=', expr(0.)))
+            doubt_assumpts.append((j, targ))
 
-        if has_doubts:
+        for j, targ in doubt_assumpts:
+            assumpts = list()
+            for i, a in doubt_assumpts:
+                if i < j:
+                    assumpts.append(assumption(targ, '<', a ) )
+                elif i == j:
+                    assumpts.append(assumption(targ, '<', Number(0) ) )
+                else:
+                    assumpts.append(assumption(targ, '<=', a ) )
+
+            res = self.test_assumtions(assumpts)
+            if res == result.not_possible: continue
+            for table in self.get_next_tables_by_row(j, assumpts):
+                yield table
+
+        if len(doubt_assumpts) > 0:
+            assumpts = list()
+            for i, a in doubt_assumpts:
+                assumpts.append(assumption(a, '>=', Number(0) ) )
+
             next = simplex_table()
             next.amount_of_vars = self.amount_of_vars
             next.amount_of_equations = self.amount_of_equations
@@ -215,7 +230,7 @@ class simplex_table:
             next.target = self.target[:]
             next.target_free = self.target_free
 
-            res, pot = self.test_and_add_assumptions(global_assumps)
+            res, pot = self.test_and_add_assumptions(assumpts)
             if res != result.not_possible:
                 next.pots = pot
                 next.path = self.path + [(-1,-1,-1)]

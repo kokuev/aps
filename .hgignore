@@ -1,2 +1,3 @@
 syntax: glob
 result
+__pycache__

@@ -1,6 +1,7 @@
 from interval import intervals, interval
 
-def get_linear_data_intervals(sym_lims, data):
+def _get_linear_data_intervals(sym_lims, exp):
+    data = exp.data
     ret = intervals(interval(0, True, 0, True))
     for (k, mn) in data:
         one = intervals(interval(k, True, k, True))
@@ -12,8 +13,26 @@ def get_linear_data_intervals(sym_lims, data):
         ret = ret.get_add_intervals(one)
     return ret
 
+def get_linear_data_intervals(sym_lims, exp):
+    ret = intervals(interval(0, True, 0, True))
+    expcd = exp.as_coefficients_dict()
+    for mn in expcd:
+        k = expcd[mn]
+        one = intervals(interval(k, True, k, True))
+        c, mns = mn.as_coeff_mul()
+        for omns in mns:
+            pomns = omns.as_powers_dict()
+            for s in pomns:
+                p = pomns[s]
+                if s in sym_lims:
+                    one = one.get_mult_intervals(sym_lims[s].get_intervals_by_pow(p))
+                else:
+                    one = one.get_mult_intervals(intervals(interval(float('-inf'), True, float('inf'), True)))
+        ret = ret.get_add_intervals(one)
+    return ret
+
 def test_linear_assumption(sym_lims, a):
-    a_interval = get_linear_data_intervals(sym_lims, a.exp.data)
+    a_interval = get_linear_data_intervals(sym_lims, a.exp)
     if a.sign == '>=': need = intervals(interval(0, False, float('inf'), True))
     elif a.sign == '>': need = intervals(interval(0, True, float('inf'), True))
     elif a.sign == '<': need = intervals(interval(float('-inf'), True, 0, True))
@@ -25,7 +44,8 @@ def test_linear_assumption(sym_lims, a):
     return not result.is_zero()
 
 def get_ration_data_intervals(sym_lims, exp):
-    denom_intervals = get_linear_data_intervals(sym_lims, exp.denomerator.data)
-    num_intervals = get_linear_data_intervals(sym_lims, exp.numerator.data)
+    num, denom = exp.as_numer_denom()
+    denom_intervals = get_linear_data_intervals(sym_lims, num)
+    num_intervals = get_linear_data_intervals(sym_lims, denom)
     denom_intervals = denom_intervals.get_dived_intervals()
     return num_intervals.get_mult_intervals(denom_intervals)

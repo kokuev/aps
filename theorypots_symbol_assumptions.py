@@ -2,7 +2,8 @@ __author__ = 'ak'
 
 from copy import deepcopy
 from interval import intervals, interval
-from expression import linear, expr
+#from expression import linear, expr
+from sympy import Number
 from assumption import  result, assumption
 from theorypots_numerical import decompose
 from theorypots_sign_lists import combine_signs_list, check_sign_lists, dedup
@@ -48,17 +49,26 @@ class decomposed_assumption:
     def add_symbol_assumption(self, assumption):
         self.variant.add_symbol_assumption(assumption)
 
+def try_assumpt_linear(assumpt, symbol):
+    exp = assumpt.exp
+    poly = exp.as_poly(symbol)
+    if not poly: return None
+    if poly.degree(symbol) != 1: return None
+    a, b_ = exp.as_coeff_add(symbol)
+    some = Number(0)
+    for sb in b_: some += sb
+
+    b = (some / symbol).simplify()
+
+    return a, b
+
+
 def prepare_decomposed_assumptions(assumpt, assumpt_deps):
     variants = decomposed_assumption()
     for symbol in assumpt_deps:
-        res = assumpt.exp.try_linear(symbol)
+        res = try_assumpt_linear(assumpt, symbol)
         if not res: continue
-        a_, b_, p = res
-        if p != 1: continue
-        a = linear()
-        a.data = a_
-        b = linear()
-        b.data = b_
+        a, b = res
 
         sign = assumpt.sign
 
@@ -66,21 +76,21 @@ def prepare_decomposed_assumptions(assumpt, assumpt_deps):
 
         if sign == '==':
             variants.new_variant()
-            variants.add_assumption( assumption(expr(a), '!=', expr(0)) )
-            variants.add_symbol_assumption( (symbol, '==', expr(-1)*expr(b)/expr(a)) )
+            variants.add_assumption( assumption(a, '!=', Number(0)) )
+            variants.add_symbol_assumption( (symbol, '==', Number(-1)*b/a ) )
 
             variants.new_variant()
-            variants.add_assumption( assumption(expr(a), '==', expr(0)) )
-            variants.add_assumption( assumption(expr(b), '==', expr(0)) )
+            variants.add_assumption( assumption(a, '==', Number(0)) )
+            variants.add_assumption( assumption(b, '==', Number(0)) )
 
         elif sign == '!=':
             variants.new_variant()
-            variants.add_assumption( assumption(expr(a), '!=', expr(0)) )
-            variants.add_symbol_assumption( (symbol, '!=', expr(-1)*expr(b)/expr(a)) )
+            variants.add_assumption( assumption(a, '!=', Number(0)) )
+            variants.add_symbol_assumption( (symbol, '!=', Number(-1)*b/a) )
 
             variants.new_variant()
-            variants.add_assumption( assumption(expr(a), '==', expr(0)) )
-            variants.add_assumption( assumption(expr(b), '!=', expr(0)) )
+            variants.add_assumption( assumption(a, '==', Number(0)) )
+            variants.add_assumption( assumption(b, '!=', Number(0)) )
 
         else:
             if sign == '>': neg_sign = '<'
@@ -89,16 +99,16 @@ def prepare_decomposed_assumptions(assumpt, assumpt_deps):
             else: neg_sign = '>='
 
             variants.new_variant()
-            variants.add_assumption( assumption(expr(a), '>', expr(0)) )
-            variants.add_symbol_assumption( (symbol, sign, expr(-1)*expr(b)/expr(a)) )
+            variants.add_assumption( assumption(a, '>', Number(0)) )
+            variants.add_symbol_assumption( (symbol, sign, Number(-1)*b/a) )
 
             variants.new_variant()
-            variants.add_assumption( assumption(expr(a), '<', expr(0)) )
-            variants.add_symbol_assumption( (symbol, neg_sign, expr(-1)*expr(b)/expr(a)) )
+            variants.add_assumption( assumption(a, '<', Number(0)) )
+            variants.add_symbol_assumption( (symbol, neg_sign, Number(-1)*b/a) )
 
             variants.new_variant()
-            variants.add_assumption( assumption(expr(a), '==', expr(0)) )
-            variants.add_assumption( assumption(expr(b), sign, expr(0)) )
+            variants.add_assumption( assumption(a, '==', Number(0)) )
+            variants.add_assumption( assumption(b, sign, Number(0)) )
 
     variants.new_variant_group()
     return variants

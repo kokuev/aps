@@ -1,7 +1,8 @@
 import yaml
 from assumption import assumption
 import simplex
-from expression import expr
+#from expression import expr
+from sympy.parsing.sympy_parser import parse_expr
 import pickle
 
 def get_solution(table, ttl):
@@ -36,7 +37,7 @@ class simplex_task:
         self.root_table.amount_of_vars = len(target)
         self.root_table.amount_of_equations = len(free)
         for i in free:
-            assumptions.append(assumption(i, '>=', expr(.0)))
+            assumptions.append(assumption(i, '>=', parse_expr('.0')))
         res, pot = self.root_table.test_and_add_assumptions(assumptions)
         self.root_table.pots = pot
 
@@ -53,7 +54,7 @@ class simplex_task:
         for row in cfg['matrix']:
             temp = []
             for column in row:
-                temp.append(expr(column))
+                temp.append(parse_expr(str(column)))
             limits.append(temp)
 
         if 'free' not in cfg:
@@ -61,16 +62,16 @@ class simplex_task:
 
         free = []
         for e in cfg['free']:
-            free.append(expr(e))
+            free.append(parse_expr(str(e)))
 
         if 'target' not in cfg or len(cfg['target']) < 2:
             raise('no valid target in file: ' + filename)
 
-        target_free = expr(cfg['target'][0])
+        target_free = parse_expr(str(cfg['target'][0]))
 
         target = []
         for e in cfg['target'][1:]:
-            target.append(expr(e))
+            target.append(parse_expr(str(e)))
 
         if 'basis' not in cfg:
             raise('no basis in file: ' + filename)
@@ -79,9 +80,8 @@ class simplex_task:
 
         assumptions = []
         if 'assumptions' in cfg:
-            for assum in cfg['assumptions']:
-                a, b, c = assum
-                assumptions.append(assumption(expr(a), b, expr(c)))
+            for a, b, c in cfg['assumptions']:
+                assumptions.append(assumption(parse_expr(str(a)), b, parse_expr(str(c))))
 
         self.set(limits, free, target_free, target, basis, assumptions)
 

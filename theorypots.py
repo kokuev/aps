@@ -2,7 +2,7 @@ __author__ = 'ak'
 
 from copy import deepcopy
 from interval import intervals
-from expression import expr
+#from expression import expr
 from assumption import result, assumption
 from theorypots_linear_assumptions_for_pot import assumption_ratio_to_linear
 from theorypots_numerical import decompose # TODO: names refactoring
@@ -171,7 +171,7 @@ import time
 
 if __name__ == "__main__":
     from assumption import assumption
-    from expression import expr
+    #from expression import expr
 
     t = theorypots()
 

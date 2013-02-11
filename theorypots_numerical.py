@@ -1,7 +1,8 @@
-import assumption
+from assumption import assumption
 from interval import intervals, interval
 import math
 from theorypots_numerical_poly import get_poly_roots,get_fx
+from sympy import Number
 
 def get_poly_interval(a, n, sign, roots):
     roots = sorted(roots)
@@ -138,8 +139,8 @@ def get_poly(res, sign):
 
     return get_poly_interval(a, p, sign, roots)
 
-def decompose(assumpt):
-    deps = assumpt.exp.depends()
+def _decompose(assumpt):
+    deps = assumpt.depends()
     if len(deps) != 1: return None
     symb = deps[0]
     res = assumpt.exp.try_linear(symb)
@@ -154,9 +155,65 @@ def decompose(assumpt):
     if res: return res
     return None
 
+def get_intervals(poly, sign, roots, minimum):
+    i = intervals(interval(0, True, 0, True))
+
+    if sign == '==':
+        for x in roots:
+            i += interval(x, False, x, False)
+        return i
+    if sign == '!=':
+        r = float('-inf')
+        for x in roots:
+            l, r = r, x
+            i += interval(l, True, r, True)
+        l, r = r, float('inf')
+        i += interval(l, True, r, True)
+        return i
+
+    need_neg = False
+    strong = True
+    if sign == '>=': strong = False
+    if sign == '<' or sign == '<=':
+        need_neg = True
+        if sign == '<=': strong = False
+
+    neg = False
+    if poly(minimum - Number(100)).is_negative:
+        neg = True
+
+    r = float('-inf')
+    for x in roots:
+        l, r = r, x
+        if not neg ^ need_neg:
+            i += interval(l, strong, r, strong)
+        neg = not neg
+
+    l, r = r, float('inf')
+    if not neg ^ need_neg:
+        i += interval(l, strong, r, strong)
+
+    return i
+
+def decompose(assumpt):
+    deps = assumpt.depends()
+    if len(deps) != 1: return None
+    poly = assumpt.exp.as_poly()
+    if not poly: return None
+
+    minimum = None
+    roots = poly.all_roots()
+    for root in roots:
+        if not root.is_number or not root.is_real:
+            return None
+        if minimum == None or root < minimum:
+            minimum = root
+
+    return get_intervals(poly, assumpt.sign, roots, minimum)
 
 if __name__ == "__main__":
     from expression import linear
+    from sympy import Number, Symbol
     """print(decompose(assumption(linear(4)*linear('x') , '>', linear(2))))
     print(decompose(assumption(linear(4)*linear('x') , '>', linear(-2))))
     print(decompose(assumption(linear(4)*linear('x')*linear('x') , '>', linear(2))))
@@ -166,28 +223,36 @@ if __name__ == "__main__":
     print(decompose(assumption(linear(4)*linear('x')*linear('x')*linear('x') , '<=', linear(2))))
     print(decompose(assumption(linear(4)*linear('x')*linear('x')*linear('x') , '<', linear(2))))
     print(decompose(assumption(linear(4)*linear('x')*linear('x')*linear('x') , '<', linear(-2))))"""
-    a = linear(-1)
-    b = linear(20)
-    c = linear(11)
-    d = linear(-100)
-    x = linear('x')
+    a = Number(-1)
+    b = Number(20)
+    c = Number(11)
+    d = Number(-100)
+    x = Symbol('x')
     """print(decompose(assumption(a*x*x*x + b*x*x + c*x + d, '>', linear(0.))))
     print(decompose(assumption(a*x*x*x + b*x*x + c*x + d, '>=', linear(0.))))
     print(decompose(assumption(a*x*x*x + b*x*x + c*x + d, '<', linear(0.))))
     print(decompose(assumption(a*x*x*x + b*x*x + c*x + d, '<=', linear(0.))))"""
 
-    a = linear(1)
-    b = linear(2000)
-    c = linear(1999)
-    print(decompose(assumption(a*x*x + b*x + c, '>', linear(0.))))
-    print(decompose(assumption(a*x*x + b*x + c, '>=', linear(0.))))
-    print(decompose(assumption(a*x*x + b*x + c, '<', linear(0.))))
-    print(decompose(assumption(a*x*x + b*x + c, '<=', linear(0.))))
+    a = Number(1)
+    b = Number(2000)
+    c = Number(1999)
+    print(decompose(assumption(a*x*x + b*x + c, '>', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '>=', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '<', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '<=', Number(0.))))
 
-    a = linear(-1)
-    b = linear(-1999)
-    c = linear(2000)
-    print(decompose(assumption(a*x*x + b*x + c, '>', linear(0.))))
-    print(decompose(assumption(a*x*x + b*x + c, '>=', linear(0.))))
-    print(decompose(assumption(a*x*x + b*x + c, '<', linear(0.))))
-    print(decompose(assumption(a*x*x + b*x + c, '<=', linear(0.))))
+    a = Number(-1)
+    b = Number(-1999)
+    c = Number(2000)
+    print(decompose(assumption(a*x*x + b*x + c, '>', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '>=', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '<', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '<=', Number(0.))))
+
+    a = Number(1)
+    b = Number(0)
+    c = Number(0)
+    print(decompose(assumption(a*x*x + b*x + c, '>', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '>=', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '<', Number(0.))))
+    print(decompose(assumption(a*x*x + b*x + c, '<=', Number(0.))))
