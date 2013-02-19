@@ -16,7 +16,7 @@ def get_solution(table, ttl):
 
 class simplex_task:
     def calculate(self):
-        self.solution = get_solution(self.root_table, 4)
+        self.solution = get_solution(self.root_table, 5)
 
     def check(self, limits, free, target_free, target, basis, assumptions):
         # TODO: some checks =)
@@ -37,7 +37,7 @@ class simplex_task:
         self.root_table.amount_of_vars = len(target)
         self.root_table.amount_of_equations = len(free)
         for i in free:
-            assumptions.append(assumption(i, '>=', parse_expr('.0')))
+            assumptions.append(assumption(i, '>', parse_expr('0')))
         res, pot = self.root_table.test_and_add_assumptions(assumptions)
         self.root_table.pots = pot
 

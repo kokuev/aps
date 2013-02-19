@@ -2,12 +2,12 @@ __author__ = 'ak'
 
 from copy import deepcopy
 from interval import intervals
-#from expression import expr
 from assumption import result, assumption
 from theorypots_linear_assumptions_for_pot import assumption_ratio_to_linear
 from theorypots_numerical import decompose # TODO: names refactoring
 from theorypots_symbol_assumptions import pot_symbol_variants
 from theorypots_intervals import test_linear_assumption
+from sympy import Number
 
 class theorypot:
     def __init__(self):
@@ -50,6 +50,15 @@ class theorypot:
                 return False
             return True
 
+        some_res = self.basic_test_linear_assumption(linear_assumption)
+        if some_res == result.correct:
+            return True
+        elif some_res == result.not_possible:
+            return False
+
+        if not test_linear_assumption(self.symbol_intervals, linear_assumption):
+            return False
+
         return True
 
     def has_already(self, linear_assumption):
@@ -57,6 +66,46 @@ class theorypot:
             if assumption == linear_assumption:
                 return True
         return False
+
+    def basic_test_linear_assumption(self, linear_assumption):
+        lexp, lsign = linear_assumption.exp, linear_assumption.sign
+        for assumption in self.assumptions:
+            exp, sign = assumption.exp, assumption.sign
+            if exp == lexp:
+                if   sign == '>'  and lsign == '>' : return result.correct
+                elif sign == '>'  and lsign == '>=': return result.correct
+                elif sign == '>'  and lsign == '==': return result.not_possible
+                elif sign == '>'  and lsign == '!=': return result.correct
+                elif sign == '>=' and lsign == '>' : return result.possible
+                elif sign == '>=' and lsign == '>=': return result.correct
+                elif sign == '>=' and lsign == '==': return result.possible
+                elif sign == '>=' and lsign == '!=': return result.possible
+                elif sign == '==' and lsign == '>' : return result.not_possible
+                elif sign == '==' and lsign == '>=': return result.correct
+                elif sign == '==' and lsign == '==': return result.correct
+                elif sign == '==' and lsign == '!=': return result.not_possible
+                elif sign == '!=' and lsign == '>' : return result.possible
+                elif sign == '!=' and lsign == '>=': return result.possible
+                elif sign == '!=' and lsign == '==': return result.not_possible
+                elif sign == '!=' and lsign == '!=': return result.correct
+            elif exp == lexp*Number(-1):
+                if   sign == '>'  and lsign == '>' : return result.not_possible
+                elif sign == '>'  and lsign == '>=': return result.not_possible
+                elif sign == '>'  and lsign == '==': return result.not_possible
+                elif sign == '>'  and lsign == '!=': return result.correct
+                elif sign == '>=' and lsign == '>' : return result.not_possible
+                elif sign == '>=' and lsign == '>=': return result.possible
+                elif sign == '>=' and lsign == '==': return result.possible
+                elif sign == '>=' and lsign == '!=': return result.possible
+                elif sign == '==' and lsign == '>' : return result.not_possible
+                elif sign == '==' and lsign == '>=': return result.correct
+                elif sign == '==' and lsign == '==': return result.correct
+                elif sign == '==' and lsign == '!=': return result.not_possible
+                elif sign == '!=' and lsign == '>' : return result.possible
+                elif sign == '!=' and lsign == '>=': return result.possible
+                elif sign == '!=' and lsign == '==': return result.not_possible
+                elif sign == '!=' and lsign == '!=': return result.correct
+        return result.possible
 
     def _add_linear_assumption(self, linear_assumption):
         assumption_deps = linear_assumption.depends()
@@ -86,18 +135,23 @@ class theorypot:
                 return False
             return True
 
-        if self.has_already(linear_assumption):
+        some_res = self.basic_test_linear_assumption(linear_assumption)
+        if some_res == result.correct:
             return True
+        elif some_res == result.not_possible:
+            print("[info] filtered by basic_test_linear_assumption")
+            return False
 
         if not test_linear_assumption(self.symbol_intervals, linear_assumption):
             print("[info] filtered by test_linear_assumption")
             return False
 
-        if not self.symbol_variants.linear_assumption_decompose(self, linear_assumption, assumption_deps):
-            return False
-
         self.assumptions.append(linear_assumption)
         self.new_assumptions.append(linear_assumption)
+
+        if not self.symbol_variants.linear_assumption_decompose(self, linear_assumption, assumption_deps):
+            print("[info] filtered by linear_assumption_decompose")
+            return False
 
         return True
 
@@ -172,33 +226,34 @@ import time
 if __name__ == "__main__":
     from assumption import assumption
     #from expression import expr
+    from sympy import Symbol, Number
 
     t = theorypots()
 
-    b1 = expr('b1')
-    b2 = expr('b2')
-    a11 = expr('a11')
-    a12 = expr('a12')
-    a21 = expr('a21')
-    a22 = expr('a22')
-    c1 = expr('c1')
-    c2 = expr('c2')
+    b1 = Symbol('b1')
+    b2 = Symbol('b2')
+    a11 = Symbol('a11')
+    a12 = Symbol('a12')
+    a21 = Symbol('a21')
+    a22 = Symbol('a22')
+    c1 = Symbol('c1')
+    c2 = Symbol('c2')
 
     t1 = time.clock()
 
-    print('ret:', t.add_assumptions([assumption(b2, '>=', expr(0)), assumption(b1, '>=', expr(0)), assumption(c1, '<', expr(0)), assumption(a11, '>', expr(0))] ))
+    print('ret:', t.add_assumptions([assumption(b2, '>=', Number(0)), assumption(b1, '>=', Number(0)), assumption(c1, '<', Number(0)), assumption(a11, '>', Number(0))] ))
     #print(t)
-    print('ret:', t.add_or_assumptions([ [assumption(a21, '<=', expr(0))], [assumption(a21, '>', expr(0)), assumption(b2*a11-b1*a21, '>=', expr(0))] ]))
+    print('ret:', t.add_or_assumptions([ [assumption(a21, '<=', Number(0))], [assumption(a21, '>', Number(0)), assumption(b2*a11-b1*a21, '>=', Number(0))] ]))
     #print('+' * 60)
     #print(t)
-    print('ret:', t.add_assumptions([assumption( (c1*a12-c2*a11)/a11 , '>', 0) , assumption( (a11*a22-a12*a21)/a11 , '>', 0) ] ))
+    print('ret:', t.add_assumptions([assumption( (c1*a12-c2*a11)/a11 , '>', Number(0)) , assumption( (a11*a22-a12*a21)/a11 , '>', Number(0)) ] ))
     #print(t)
-    print('ret:', t.add_or_assumptions([ [assumption( a12/a11, '<=', expr(0))],
+    print('ret:', t.add_or_assumptions([ [assumption( a12/a11, '<=', Number(0))],
                                          [
-                                             assumption(a12/a11, '>', expr(0)),
-                                             assumption( (b1*a11*a22 - a12*b2*a11)/(a12*a11*a22-a12*a12*a21), '>=', expr(0))]
+                                             assumption(a12/a11, '>', Number(0)),
+                                             assumption( (b1*a11*a22 - a12*b2*a11)/(a12*a11*a22-a12*a12*a21), '>=', Number(0))]
     ]))
-    print('ret:', t.add_assumptions([assumption( a22 , '>', 0) , assumption( (c1*a22-c2*a21) , '>', 0) ] ))
+    print('ret:', t.add_assumptions([assumption( a22 , '>', Number(0)) , assumption( (c1*a22-c2*a21) , '>', Number(0)) ] ))
     print('pots:', t, sep='\n')
     t2 = time.clock()
 

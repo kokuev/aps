@@ -76,7 +76,7 @@ def assumption_not_equal_ratio_to_linear(assumpt, pot):
     (num, denom) = assumpt.exp.as_numer_denom()
 
     if denom.is_number and denom.is_zero:
-        variations.get_linear_assumption_list()
+        return variations.get_linear_assumption_list()
 
     if not num.is_number:
         num_dict = num.combsimp().as_powers_dict()
@@ -84,10 +84,10 @@ def assumption_not_equal_ratio_to_linear(assumpt, pot):
             if not m.is_number:
                 num_mults.append(m)
             elif m.is_zero:
-                variations.get_linear_assumption_list()
+                return variations.get_linear_assumption_list()
     else:
         if num.is_zero:
-            variations.get_linear_assumption_list()
+            return variations.get_linear_assumption_list()
         else:
             variations.add_assumption(assumption(Number(0), '==', Number(0)))
             return variations.get_linear_assumption_list()
@@ -109,6 +109,18 @@ def assumption_signed_ratio_to_linear(assumpt, pot):
 
     assumpt.exp = assumpt.exp.simplify()
     (num, denom) = assumpt.exp.as_numer_denom()
+
+    if num.is_number and denom.is_number:
+        if denom.is_zero:
+            return variations.get_linear_assumption_list()
+        if num.is_zero:
+            if assumpt.sign == '>': return variations.get_linear_assumption_list()
+            else: return variations.add_assumption(assumption(Number(0), '==', Number(0)))
+        sign = 1
+        if num.is_negative: sign *= -1
+        if denom.is_negative: sign *= -1
+        variations.add_assumption(assumption(Number(sign), assumpt.sign, Number(0)))
+        return variations.get_linear_assumption_list()
 
     sign = 1
     if not num.is_number:
@@ -151,7 +163,7 @@ def assumption_signed_ratio_to_linear(assumpt, pot):
             variations.new_variation()
 
     s = len(num_possible_neg_mults) + len(denom_mults)
-    if s == 0: variations.get_linear_assumption_list()
+    if s == 0: return variations.get_linear_assumption_list()
 
     if sign > 0: all_signs = get_signs(s, 0)
     else: all_signs = get_signs(s, 1)

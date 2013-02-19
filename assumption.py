@@ -56,10 +56,10 @@ class assumption:
             sign = '\\leq'
         elif self.sign == '>=':
             sign = '\\geq'
-        elif sign == '==':
+        elif self.sign == '==':
             sign = '=='
-        elif sign == '!=':
-            sign = '!='
+        elif self.sign == '!=':
+            sign = '\\ne'
         return latex(self.exp) + sign + "0"
 
     def depends(self):

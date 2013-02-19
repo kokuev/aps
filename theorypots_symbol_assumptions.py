@@ -60,7 +60,7 @@ def try_assumpt_linear(assumpt, symbol):
 
     b = (some / symbol).simplify()
 
-    return a, b
+    return b, a
 
 
 def prepare_decomposed_assumptions(assumpt, assumpt_deps):
@@ -118,6 +118,30 @@ class pot_symbol_variant:
         self.symbol_assumptions = dict()
         self.assumptions = list()
 
+    def _check_assumptions_on_known_limits(self, symbol, symbols_intervals):
+        for assumption in self.assumptions:
+            assumption_deps = assumption.depends()
+            deps_len = len(assumption_deps)
+            if deps_len == 0:
+                if assumption.test() == result.not_possible: return False
+                continue
+
+            if deps_len == 1:
+                symbol = assumption_deps[0]
+                if symbol not in symbols_intervals:
+                    continue
+
+                lim = decompose(assumption)
+                if not lim:
+                    print("[warn] decompose failed:", assumption)
+                    return False
+
+                res = deepcopy(symbols_intervals[symbol])
+                res *= lim
+                if res.is_zero(): return False
+                continue
+        return True
+
     def _check_symbol_assumptions_on_known_limits(self, symbol, symbols_intervals):
         symbol_max, symbol_max_strong, symbol_min, symbol_min_strong = float('+inf'), True, float('-inf'), True
 
@@ -153,8 +177,38 @@ class pot_symbol_variant:
 
     def test_by_symbol_intervals(self, symbol_intervals):
         for symbol in self.symbol_assumptions:
+            if not self._check_assumptions_on_known_limits(symbol, symbol_intervals): return False
             if not self._check_symbol_assumptions_on_known_limits(symbol, symbol_intervals): return False
         return True
+
+    def generate_transitive_assumptions(self):
+        trans_assumpts = list()
+        for symbol in self.symbol_assumptions:
+            assumpt_dict = self.symbol_assumptions[symbol]
+            if '>' in assumpt_dict:
+                for assump1 in assumpt_dict['>']:
+                    if '<' in assumpt_dict:
+                        for assump2 in assumpt_dict['<']:
+                            trans_assumpts.append(assumption(assump1, '<', assump2))
+                    if '<=' in assumpt_dict:
+                        for assump2 in assumpt_dict['<=']:
+                            trans_assumpts.append(assumption(assump1, '<=', assump2))
+            if '>=' in assumpt_dict:
+                for assump1 in assumpt_dict['>=']:
+                    if '<' in assumpt_dict:
+                        for assump2 in assumpt_dict['<']:
+                            trans_assumpts.append(assumption(assump1, '<=', assump2))
+                    if '<=' in assumpt_dict:
+                        for assump2 in assumpt_dict['<=']:
+                            trans_assumpts.append(assumption(assump1, '<=', assump2))
+            if '==' in assumpt_dict:
+                for assump1 in assumpt_dict['==']:
+                    for assump2 in assumpt_dict['==']:
+                        if assump1 != assump2:
+                            trans_assumpts.append(assumption(assump1, '==', assump2))
+
+        dedup(trans_assumpts)
+        return trans_assumpts
 
     def _update_symbol_assumptions(self):
         for symbol in self.symbol_assumptions:
@@ -230,6 +284,7 @@ class pot_symbol_variants:
         self.variants = list()
         self.variants.append(pot_symbol_variant())
 
+
     def test_by_symbol_intervals(self, symbol_intervals):
         new_variants = list()
         for variant in self.variants:
@@ -260,6 +315,27 @@ class pot_symbol_variants:
         ret.new_variant_group()
         return ret
 
+    def check_transitive_assumptions(self, pot, variant):
+        assumptions = variant.generate_transitive_assumptions()
+        for assumption in assumptions:
+            result_pots = list()
+            linear_variations_variations = assumption_ratio_to_linear(assumption, pot)
+            has_good_variaton = False
+            for linear_assumptions in linear_variations_variations:
+                bad_variation = False
+                for linear_assumption in linear_assumptions:
+                    if not pot.linear_assumption_basic_test_on_possibility(linear_assumption):
+                        bad_variation = True
+                        break
+                if not bad_variation:
+                    has_good_variaton = True
+                    break
+
+            if not has_good_variaton:
+                return False
+
+        return True
+
     def linear_assumption_decompose(self, pot, assumpt, assumpt_deps):
         decomposed = prepare_decomposed_assumptions(assumpt, assumpt_deps)
         decomposed = self._filter_decomposed_ratio_to_linear(pot, decomposed)
@@ -271,7 +347,8 @@ class pot_symbol_variants:
                 for decomposed_variant in decompose_variant_group:
                     temp_variant = deepcopy(current_variant)
                     if temp_variant.try_assumptions(pot, decomposed_variant):
-                        new_current_variants.append(temp_variant)
+                        if self.check_transitive_assumptions(pot, temp_variant):
+                            new_current_variants.append(temp_variant)
             current_variants = new_current_variants
             if len(current_variants) == 0: break
         self.variants = current_variants

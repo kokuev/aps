@@ -40,16 +40,38 @@ def simplex_table_to_tex_solution_only(table):
     solution += '$\Psi = ' + latex(target) + '$'
     return solution
 
+def simplex_table_to_tex_pots_symbol_assumptions(pot):
+    ret = ''
+    sv = pot.symbol_variants.variants
+    if len(sv) == 0: return ret
+    for i, variant in enumerate(sv):
+        ret += 'symbol variant \#' + str(i) + ':' + '\\\\'
+        for assumption in variant.assumptions:
+            ret += "$" + assumption.to_tex() + "$ \\\\"
+        for symbol in variant.symbol_assumptions:
+            for sign in variant.symbol_assumptions[symbol]:
+                for assumption in variant.symbol_assumptions[symbol][sign]:
+                    ret += "$" + latex(symbol) + sign + latex(assumption) + "$ \\\\"
+    return ret
+
 def simplex_table_to_tex_pots_full(table):
     ret = ''
     if table.pots.is_valid():
         ret += 'pots: \\\\'
         for i, pot in enumerate(table.pots.pots):
             ret += 'pot \#' + str(i) + ':' + '\\\\'
+            ret += 'new:\\\\'
+            for s in pot.new_symbol_intervals:
+                ret += 'symbol $' + latex(s) + '$ : $' + pot.symbol_intervals[s].to_tex() + "$ \\\\"
+            for s in pot.new_assumptions:
+                ret += "$" + s.to_tex() + "$ \\\\"
+            ret += 'all:\\\\'
             for s in pot.symbol_intervals:
                 ret += 'symbol $' + latex(s) + '$ : $' + pot.symbol_intervals[s].to_tex() + "$ \\\\"
             for s in pot.assumptions:
                 ret += "$" + s.to_tex() + "$ \\\\"
+            #ret += 'symbols:\\\\'
+            #ret += simplex_table_to_tex_pots_symbol_assumptions(pot)
     return ret
 
 def simplex_table_to_tex_full(table):

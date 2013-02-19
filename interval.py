@@ -45,9 +45,19 @@ class interval:
         ret = ''
         if self.left_strong: ret += '( '
         else: ret += '[ '
-        ret += str(self.left_value)
+        if self.left_value == float('-inf'):
+            ret += '-\infty'
+        elif self.left_value == float('inf'):
+            ret += '\infty'
+        else:
+            ret += str(self.left_value)
         ret += ', '
-        ret += str(self.right_value)
+        if self.right_value == float('-inf'):
+            ret += '-\infty'
+        elif self.right_value == float('inf'):
+            ret += '\infty'
+        else:
+            ret += str(self.right_value)
         if self.right_strong: ret += ' )'
         else: ret += ' ]'
         return ret
