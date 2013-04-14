@@ -35,35 +35,30 @@ class dot_renderer:
     def add_node_lonely(self, i, tableimgpath):
         self.dot_file.write(dot_one_node_lonely.format(i, tableimgpath))
 
-    def add_node(self, i, pid, tableimgpath,c_img_path, np):
+    def _add_node(self, i, pid, tableimgpath, c_img_path, np):
         arc = ''
-        if len(c_img_path) > 0:
-            has_one = False
-            tds = ''
-            for p in np:
-                if len(p) > 0: has_one = True
-                tds += '<td border="0" valign="top"><img src="' + p + '"/></td>'
-            if not has_one:
-                arc = '[label=<<table border="0"><tr border="0"><td border="0"><img src="'+c_img_path+'"/></td></tr></table>>]'
-            else:
-                arc = '[label=<<table border="0"><tr border="0"><td border="0" colspan="'+str(len(np))+'"><img src="'+c_img_path+'"/></td></tr><tr border="0"><td border="0" height="20"></td></tr>'
-                arc += '<tr border="0">' + tds + '</tr></table>>]'
+        has_one = False
+        tds = ''
+        for p in np:
+            if len(p) > 0: has_one = True
+            tds += '<td border="0" valign="top"><img src="' + p + '"/></td>'
+        if not has_one:
+            arc = '[label=<<table border="0"><tr border="0"><td border="0">'
+            if len(c_img_path) > 0: arc += '<img src="'+c_img_path+'"/>'
+            arc += '</td></tr></table>>]'
+        else:
+            arc = '[label=<<table border="0"><tr border="0"><td border="0" colspan="'+str(len(np))+'">'
+            if len(c_img_path) > 0: arc += '<img src="'+c_img_path+'"/>'
+            arc += '</td></tr><tr border="0"><td border="0" height="20"></td></tr>'
+            arc += '<tr border="0">' + tds + '</tr></table>>]'
+        return arc
+
+    def add_node(self, i, pid, tableimgpath,c_img_path, np):
+        arc = self._add_node(i, pid, tableimgpath, c_img_path, np)
         self.dot_file.write(dot_one_node.format(i, tableimgpath, pid, i, arc))
 
     def add_node_solution(self, i, pid, tableimgpath, solutionimagepath, c_img_path, np):
-        arc = ''
-        if len(c_img_path) > 0:
-            has_one = False
-            tds = ''
-            for p in np:
-                if len(p) > 0: has_one = True
-                tds += '<td border="0"><img src="' + p + '"/></td>'
-            if not has_one:
-                arc = '[label=<<table border="0"><tr border="0"><td border="0"><img src="'+c_img_path+'"/></td></tr></table>>]'
-            else:
-                arc = '[label=<<table border="0"><tr border="0"><td border="0" colspan="'+str(len(np))+'"><img src="'+c_img_path+'"/></td></tr>'
-                arc += '<tr border="0">' + tds + '</tr></table>>]'
-
+        arc = self._add_node(i, pid, tableimgpath, c_img_path, np)
         self.dot_file.write(dot_one_node_solution.format(i, tableimgpath, solutionimagepath, pid, i, arc))
 
     def compile(self, result_file_name):

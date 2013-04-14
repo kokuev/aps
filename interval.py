@@ -3,7 +3,7 @@ from assumption import assumption
 __author__ = 'ak'
 
 from copy import deepcopy
-from expression import linear
+from sympy import Symbol, Number
 import math
 
 class interval:
@@ -120,15 +120,16 @@ class interval:
         if self.right_value != other.right_value: return False
         if self.left_strong != other.left_strong: return False
         if self.left_value != other.left_value: return False
+        return True
 
     def get_assumptions(self, symbol):
         ret = list()
         if self.right_value != float('inf'):
-            if self.right_strong: ret.append( assumption(linear(symbol), '<', linear(self.right_value)) )
-            else: ret.append( assumption(linear(symbol), '<=', linear(self.right_value)) )
+            if self.right_strong: ret.append( assumption(symbol, '<', Number(self.right_value)) )
+            else: ret.append( assumption(symbol, '<=', Number(self.right_value)) )
         if self.left_value != float('-inf'):
-            if self.left_strong: ret.append( assumption(linear(symbol), '>', linear(self.left_value)) )
-            else: ret.append( assumption(linear(symbol), '>=', linear(self.left_value)) )
+            if self.left_strong: ret.append( assumption(symbol, '>', Number(self.left_value)) )
+            else: ret.append( assumption(symbol, '>=', Number(self.left_value)) )
         return ret
 
     def get_interval_by_pow(self, p):
