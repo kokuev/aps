@@ -1,17 +1,5 @@
 from interval import intervals, interval
 
-def _get_linear_data_intervals(sym_lims, exp):
-    data = exp.data
-    ret = intervals(interval(0, True, 0, True))
-    for (k, mn) in data:
-        one = intervals(interval(k, True, k, True))
-        for m in mn:
-            if m in sym_lims:
-                one = one.get_mult_intervals(sym_lims[m].get_intervals_by_pow(mn[m]))
-            else:
-                one = one.get_mult_intervals(intervals(interval(float('-inf'), True, float('inf'), True)))
-        ret = ret.get_add_intervals(one)
-    return ret
 
 def get_linear_data_intervals(sym_lims, exp):
     ret = intervals(interval(0, True, 0, True))

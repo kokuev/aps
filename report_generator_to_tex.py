@@ -151,6 +151,7 @@ def simplex_table_to_tex_solution_only(table):
     solution += '$\Psi = ' + latex(target) + '$'
     return solution
 
+"""
 def simplex_table_to_tex_pots_symbol_assumptions(pot):
     ret = ''
     sv = pot.symbol_variants.variants
@@ -164,6 +165,7 @@ def simplex_table_to_tex_pots_symbol_assumptions(pot):
                 for assumption in variant.symbol_assumptions[symbol][sign]:
                     ret += "$" + latex(symbol) + sign + latex(assumption) + "$ \\\\"
     return ret
+"""
 
 def simplex_table_to_tex_pots_full(table):
     ret = ''

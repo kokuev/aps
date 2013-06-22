@@ -64,14 +64,15 @@ def full_add_nodes(tr, solution):
 
 def main():
     solution = pickle.load(open(result_file_name, 'rb'))
-    #tr = tex_page_renderer()
-    #full_add_nodes(tr, solution)
-    #tr.compile(report_full_file_name)
-    tr = tex_image_renderer()
-    dr = dot_renderer()
-    add_nodes(tr, dr, solution)
-    tr.compile_images()
-    dr.compile(report_graph_file_name)
+    tr = tex_page_renderer()
+    full_add_nodes(tr, solution)
+    tr.compile(report_full_file_name)
+
+    #tr = tex_image_renderer()
+    #dr = dot_renderer()
+    #add_nodes(tr, dr, solution)
+    #tr.compile_images()
+    #dr.compile(report_graph_file_name)
 
 
 if __name__ == "__main__":

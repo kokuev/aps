@@ -40,22 +40,6 @@ class simplex_table:
 
         self.solution = (var, self.target_free)
 
-    def check(self):
-        if len(self.basis) > self.amount_of_equations: return 1
-        return 0
-
-    def number(self):
-        if len(self.path) == 0:
-            number = ' initial'
-            out_basis, in_basis = -1, -1
-        else:
-            number = ""
-            for (i, bi, j) in self.path:
-                if number: number = number + "." + str(i)
-                else: number = str(i)
-            out_basis, out_basis_,in_basis = self.path[-1]
-        return number
-
     def test_assumtions(self, assumptions):
         (res, assumps) = _filter_possible(assumptions)
         if res == result.possible:
