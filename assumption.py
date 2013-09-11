@@ -13,7 +13,7 @@ class test_result:
 
 def test_expr_on_finite(exp):
     for x in exp.atoms(Number):
-        if x.is_finite == False:
+        if x.is_finite == False and x.is_nonzero:
             return False
     return None
 
