@@ -4,21 +4,21 @@
     <list default="true" id="fa04076e-133f-40b6-9098-e35b6cf360d9" name="Default" comment="" />
     <ignored path="aps.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/simplex_task.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1360518211212" ignored="false" />
-    <file path="/assumption.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1360545552716" ignored="false" />
+    <file path="/simplex_task.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1378970307934" ignored="false" />
+    <file path="/assumption.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1377556170527" ignored="false" />
     <file path="/theorypots_linear_assumptions_for_pot.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361136791527" ignored="false" />
     <file path="/theorypots_numerical.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1360539769855" ignored="false" />
     <file path="/simplex.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361742079768" ignored="false" />
-    <file path="/theorypots.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361141014166" ignored="false" />
-    <file path="/theorypots_symbol_assumptions.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361152148767" ignored="false" />
+    <file path="/theorypots.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1378968391220" ignored="false" />
+    <file path="/theorypots_symbol_assumptions.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1378968335527" ignored="false" />
     <file path="/_theorypots.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1360540286388" ignored="false" />
     <file path="/report_generator_to_tex.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361753094103" ignored="false" />
     <file path="/theorypots_intervals.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361744074211" ignored="false" />
-    <file path="/task.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1360546073540" ignored="false" />
+    <file path="/task.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1377555071488" ignored="false" />
     <file path="/fragment.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361733438729" ignored="false" />
     <file path="/interval.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361733522044" ignored="false" />
-    <file path="/report_generator.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1365947074266" ignored="false" />
-    <file path="/report_generator_dot.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361725882221" ignored="false" />
+    <file path="/report_generator.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1387729887662" ignored="false" />
+    <file path="/report_generator_dot.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1387733277488" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/openapi.jar!/standardSchemas/xml.xsd" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1371912671869" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/openapi.jar!/standardSchemas/xhtml1-strict.xsd" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1371912671869" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/openapi.jar!/standardSchemas/catalog.xsd" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1371912671869" ignored="false" />
@@ -26,6 +26,10 @@
     <file path="$APPLICATION_HOME_DIR$/lib/openapi.jar!/standardSchemas/xinclude.xsd" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1371912671869" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/openapi.jar!/standardSchemas/xslt-1_0.xsd" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1371912671869" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/openapi.jar!/standardSchemas/xslt-2_0.xsd" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1371912671869" ignored="false" />
+    <file path="$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1377555546382" ignored="false" />
+    <file path="/report_generator_c.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1378056874279" ignored="false" />
+    <file path="/report_generator_tex.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1379261625272" ignored="false" />
+    <file path="/aps.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1387731019075" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,17 +58,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="theorypots_intervals.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theorypots_intervals.py">
+      <file leaf-file-name="task.yaml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks/task.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="49" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0">
+            <state line="10" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="theorypots_linear_assumptions_for_pot.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theorypots_linear_assumptions_for_pot.py">
+      <file leaf-file-name="report_generator.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/report_generator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="38" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="report_generator_dot.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/report_generator_dot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="20" selection-start="1973" selection-end="1973" vertical-scroll-proportion="0.25365853">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aps.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task_2x2.yaml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks/task_2x2.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theorypots_symbol_assumptions.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/theorypots_symbol_assumptions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="224" column="33" selection-start="9855" selection-end="9855" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="multi_task.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/multi_task.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="0" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="report_generator_c.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/report_generator_c.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="38" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theorypots_numerical_poly.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/theorypots_numerical_poly.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -75,61 +142,7 @@
       <file leaf-file-name="theorypots_numerical.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/theorypots_numerical.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="237" column="43" selection-start="8553" selection-end="8553" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="theorypots_numerical_poly.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theorypots_numerical_poly.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="15" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="theorypots_sign_lists.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theorypots_sign_lists.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="38" selection-start="794" selection-end="794" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="theorypots_symbol_assumptions.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/theorypots_symbol_assumptions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="317" column="57" selection-start="13951" selection-end="13951" vertical-scroll-proportion="0.14133017">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simplex.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simplex.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simplex_task.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simplex_task.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="29" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="theorypots.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theorypots.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="18" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,29 +158,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/report_generator_tex.py" />
-        <option value="$PROJECT_DIR$/_theorypots.py" />
-        <option value="$PROJECT_DIR$/simplex_task.py" />
-        <option value="$PROJECT_DIR$/theorypots_linear_assumptions_for_pot.py" />
-        <option value="$PROJECT_DIR$/theorypots.py" />
-        <option value="$PROJECT_DIR$/report_generator_dot.py" />
-        <option value="$PROJECT_DIR$/interval.py" />
-        <option value="$PROJECT_DIR$/tasks/task.yaml" />
-        <option value="$PROJECT_DIR$/theorypots_numerical.py" />
-        <option value="$PROJECT_DIR$/theorypots_ratio_to_linear.py" />
-        <option value="$PROJECT_DIR$/assumption.py" />
-        <option value="$PROJECT_DIR$/report_generator.py" />
-        <option value="$PROJECT_DIR$/report_generator_to_tex.py" />
         <option value="$PROJECT_DIR$/simplex.py" />
         <option value="$PROJECT_DIR$/theorypots_intervals.py" />
+        <option value="$PROJECT_DIR$/assumption.py" />
+        <option value="$PROJECT_DIR$/reports/task.cpp" />
+        <option value="$PROJECT_DIR$/report_generator_c.py" />
+        <option value="$PROJECT_DIR$/tasks/task_search.yaml" />
         <option value="$PROJECT_DIR$/theorypots_symbol_assumptions.py" />
+        <option value="$PROJECT_DIR$/theorypots.py" />
+        <option value="$PROJECT_DIR$/simplex_task.py" />
+        <option value="$PROJECT_DIR$/report_generator_tex.py" />
+        <option value="$PROJECT_DIR$/tasks/task_2x2.yaml" />
+        <option value="$PROJECT_DIR$/tasks/task.yaml" />
+        <option value="$PROJECT_DIR$/report_generator.py" />
+        <option value="$PROJECT_DIR$/aps.py" />
+        <option value="$PROJECT_DIR$/multi_task.py" />
+        <option value="$PROJECT_DIR$/report_generator_dot.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1680" />
-    <option name="height" value="1024" />
+    <option name="height" value="1002" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -214,6 +227,48 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tasks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="result" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -221,9 +276,10 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="last_opened_file_path" value="/opt/local/Library/Frameworks/Python.framework/Versions/3.3/bin/python3.3" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -312,25 +368,6 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="theorypots_numerical" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="aps" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/theorypots_numerical.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="theorypots_intervals" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -347,6 +384,27 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/theorypots_intervals.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="report_generator_c" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="aps" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/report_generator_c.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -559,21 +617,21 @@
       <item index="0" class="java.lang.String" itemvalue="Python.aps" />
       <item index="1" class="java.lang.String" itemvalue="Python.theorypots" />
       <item index="2" class="java.lang.String" itemvalue="Python.report_generator" />
-      <item index="3" class="java.lang.String" itemvalue="Python.theorypots_numerical" />
-      <item index="4" class="java.lang.String" itemvalue="Python.theorypots_intervals" />
+      <item index="3" class="java.lang.String" itemvalue="Python.theorypots_intervals" />
+      <item index="4" class="java.lang.String" itemvalue="Python.report_generator_c" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.report_generator" />
         <item index="1" class="java.lang.String" itemvalue="Python.aps" />
-        <item index="2" class="java.lang.String" itemvalue="Python.theorypots_intervals" />
-        <item index="3" class="java.lang.String" itemvalue="Python.theorypots" />
-        <item index="4" class="java.lang.String" itemvalue="Python.theorypots_numerical" />
+        <item index="2" class="java.lang.String" itemvalue="Python.report_generator_c" />
+        <item index="3" class="java.lang.String" itemvalue="Python.theorypots_intervals" />
+        <item index="4" class="java.lang.String" itemvalue="Python.theorypots" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -583,7 +641,6 @@
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
     <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="DETECT_NESTED_COPIES" value="true" />
     <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
@@ -620,18 +677,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="1024" extended-state="6" />
+    <frame x="0" y="22" width="1680" height="1002" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853982" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.7641196" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19461444" sideWeight="0.18584071" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2613219" sideWeight="0.75663716" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37417218" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3004896" sideWeight="0.75774336" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37306842" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19461444" sideWeight="0.30973452" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23561947" sideWeight="0.49571604" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24336283" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2421959" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -702,74 +759,90 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/simplex.py</url>
-          <line>188</line>
-          <option name="timeStamp" value="94" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/simplex.py</url>
-          <line>187</line>
-          <option name="timeStamp" value="96" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="103" />
+      <option name="time" value="105" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/aps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/interval.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="341" column="0" selection-start="12448" selection-end="12448" vertical-scroll-proportion="0.0" />
+        <state line="337" column="27" selection-start="12362" selection-end="12362" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/report_generator.py">
+    <entry file="file://$PROJECT_DIR$/theorypots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="5" selection-start="2145" selection-end="2145" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/report_generator_dot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/report_generator_tex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="25" selection-start="701" selection-end="701" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/report_generator_to_tex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="0" selection-start="5812" selection-end="5812" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simplex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simplex_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="29" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="151" column="28" selection-start="6819" selection-end="6819" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/theorypots_intervals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="49" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0">
+        <state line="27" column="71" selection-start="1238" selection-end="1238" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theorypots_sign_lists.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="30" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report_generator_tex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="22" selection-start="2506" selection-end="2506" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theorypots_linear_assumptions_for_pot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theorypots_symbol_assumptions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="224" column="33" selection-start="9855" selection-end="9855" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/theorypots_linear_assumptions_for_pot.py">
+    <entry file="file://$PROJECT_DIR$/tasks/task.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task_2x2.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="38" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multi_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report_generator_c.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="38" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theorypots_numerical_poly.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -778,54 +851,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/theorypots_numerical.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="43" selection-start="8553" selection-end="8553" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/theorypots_numerical_poly.py">
+    <entry file="file://$PROJECT_DIR$/report_generator_dot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="15" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theorypots_sign_lists.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="38" selection-start="794" selection-end="794" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://Python/theorypots_symbol_assumptions.pot_symbol_variants">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>Python</ID>
-          <OriginalElement>theorypots_symbol_assumptions.pot_symbol_variants</OriginalElement>
-          <nodes>
-            <node x="" y="">theorypots_symbol_assumptions.pot_symbol_variants</node>
-            <node x="" y="">object</node>
-            <node x="" y="">_abcoll.Hashable</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="189.0" y="95.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theorypots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="18" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theorypots_symbol_assumptions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="317" column="57" selection-start="13951" selection-end="13951" vertical-scroll-proportion="0.14133017">
+        <state line="46" column="20" selection-start="1973" selection-end="1973" vertical-scroll-proportion="0.25365853">
           <folding />
         </state>
       </provider>
