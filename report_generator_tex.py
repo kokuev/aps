@@ -97,3 +97,4 @@ class tex_page_renderer:
         subprocess.call((tex_path, '-output-format=pdf', self.tex_filename))
         os.chdir(cwd)
         shutil.copyfile(os.path.join(os.path.dirname(self.dir), self.dvi_filename), os.path.abspath(result_file_name))
+        shutil.copyfile(os.path.join(os.path.dirname(self.dir), self.tex_filename), os.path.abspath(result_file_name + ".tex"))

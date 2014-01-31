@@ -50,16 +50,13 @@ def get_solution(table):
 	tasks = multiprocessing.Queue()
 	result = multiprocessing.Queue()
 
-	cpu_count = multiprocessing.cpu_count()
+	cpu_count = 4
 	pool = list()
 
 	for x in range(cpu_count):
 		p = multiprocessing.Process(target=worker, args=(tasks, result ))
 		p.start()
 		pool.append(p)
-
-	#p = multiprocessing.Process(target=worker, args=(tasks, result ))
-	#p.start()
 
 	tasks.put( (1, table) )
 	ret = (table, dict() )
@@ -71,7 +68,7 @@ def get_solution(table):
 
 	while True:
 		task_id, next_id, next_table = result.get()
-		#print(task_id, next_id, next_table)
+
 		if next_id == 0:
 			to_be_solved -= 1
 			if to_be_solved == 0:

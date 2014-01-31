@@ -164,14 +164,14 @@ class pot_symbol_variant:
                     symbol_min, symbol_min_strong = current_min, current_min_strong
 
         if symbol_max < symbol_min or (symbol_min == symbol_max and (symbol_min_strong == True or symbol_max_strong == True)):
-            print('[info] gonna be filtered by check_symbol...', symbol, symbol_max, symbol_min)
+            #print('[info] gonna be filtered by check_symbol...', symbol, symbol_max, symbol_min)
             return False
 
         if symbol in symbols_intervals:
             known_interval = deepcopy(symbols_intervals[symbol])
             known_interval *= interval(symbol_min, symbol_min_strong, symbol_max, symbol_max_strong)
             if known_interval.is_zero():
-                print('[info] gonna be filtered by check_symbol...', symbol, symbol_max, symbol_min, str(symbols_intervals[symbol]))
+                #print('[info] gonna be filtered by check_symbol...', symbol, symbol_max, symbol_min, str(symbols_intervals[symbol]))
                 return False
         return True
 

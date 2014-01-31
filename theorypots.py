@@ -131,7 +131,7 @@ class theorypot:
             self.symbol_intervals[symbol] = res
 
             if not self.symbol_variants.test_by_symbol_intervals(self.symbol_intervals):
-                print("[info] filtered by test_by_symbol_intervals()")
+                #print("[info] filtered by test_by_symbol_intervals()")
                 return False
             return True
 
@@ -139,18 +139,18 @@ class theorypot:
         if some_res == result.correct:
             return True
         elif some_res == result.not_possible:
-            print("[info] filtered by basic_test_linear_assumption")
+            #print("[info] filtered by basic_test_linear_assumption")
             return False
 
         if not test_linear_assumption(self.symbol_intervals, linear_assumption):
-            print("[info] filtered by test_linear_assumption")
+            #print("[info] filtered by test_linear_assumption")
             return False
 
         self.assumptions.append(linear_assumption)
         self.new_assumptions.append(linear_assumption)
 
         if not self.symbol_variants.linear_assumption_decompose(self, linear_assumption, assumption_deps):
-            print("[info] filtered by linear_assumption_decompose")
+            #print("[info] filtered by linear_assumption_decompose")
             return False
 
         return True

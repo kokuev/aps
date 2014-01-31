@@ -11,7 +11,7 @@ def get_solution_old(table, ttl):
     if ttl == 0: return table, list()
     next_tables = list()
     for x in table.get_next_tables():
-        next_tables.append(get_solution(x, ttl - 1))
+        next_tables.append(get_solution_old(x, ttl - 1))
     if len(next_tables) == 0:
         table.make_solution()
     return table, next_tables
