@@ -5,7 +5,7 @@ from report_generator_tex import tex_page_renderer, tex_image_renderer
 from report_generator_dot import dot_renderer
 from report_generator_to_tex import simplex_table_to_tex_full, simplex_table_to_tex_table_only, simplex_table_to_tex_assumptions, simplex_table_to_tex_solution_good
 
-result_file_name = 'result/task_2x2.pck'
+result_file_name = 'result/task.pck'
 report_graph_file_name = 'reports/task.png'
 report_full_file_name = 'reports/task.pdf'
 

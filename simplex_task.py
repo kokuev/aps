@@ -17,9 +17,11 @@ def get_solution_old(table, ttl):
     return table, next_tables
 
 class simplex_task:
-    def calculate(self):
-        #self.solution = get_solution_old(self.root_table, 10)
-        self.solution = get_solution(self.root_table)
+    def calculate(self, m):
+        if m == None:
+            self.solution = get_solution_old(self.root_table, 100)
+        else:
+            self.solution = get_solution(self.root_table, m)
 
     def check(self, limits, free, target_free, target, basis, assumptions):
         # TODO: some checks =)

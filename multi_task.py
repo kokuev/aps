@@ -46,11 +46,12 @@ def place_table(ret, solution, task_id, next_id, next_table):
 	_place_table(ret, path, next_table)
 
 
-def get_solution(table):
+def get_solution(table, m):
 	tasks = multiprocessing.Queue()
 	result = multiprocessing.Queue()
 
-	cpu_count = 4
+	if m <= 0: m = 4
+	cpu_count = m
 	pool = list()
 
 	for x in range(cpu_count):
