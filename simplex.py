@@ -173,11 +173,55 @@ class simplex_table:
             res, pot, orass = self.test_and_add_or_assumptions(total_assumps)
             if res == result.not_possible: continue
             ret = self.get_next_table(i, j, pot)
-            ret.debug_assumps = orass
+            #ret.debug_assumps = orass
             yield ret
 
     def get_next_tables(self):
         doubt_assumpts = list()
+
+        for (j, targ) in enumerate(self.target):
+            assumpt = assumption(targ, '<', Number(0))
+            res = self.test_assumtions([assumpt, ])
+            if res == result.not_possible: continue
+            doubt_assumpts.append((j, targ))
+
+        for j, targ in doubt_assumpts:
+            assumpts = list()
+            for i, a in doubt_assumpts:
+                if i < j:
+                    assumpts.append(assumption(targ, '<', a ) )
+                elif i == j:
+                    assumpts.append(assumption(targ, '<', Number(0) ) )
+                else:
+                    assumpts.append(assumption(targ, '<=', a ) )
+
+            res = self.test_assumtions(assumpts)
+            if res == result.not_possible: continue
+            for table in self.get_next_tables_by_row(j, assumpts):
+                yield table
+
+        if len(doubt_assumpts) > 0:
+            assumpts = list()
+            for i, a in doubt_assumpts:
+                assumpts.append(assumption(a, '>=', Number(0) ) )
+
+            next = simplex_table()
+            next.amount_of_vars = self.amount_of_vars
+            next.amount_of_equations = self.amount_of_equations
+            next.basis = self.basis[:]
+            next.free = self.free[:]
+            next.limits = deepcopy(self.limits)
+            next.target = self.target[:]
+            next.target_free = self.target_free
+
+            res, pot = self.test_and_add_assumptions(assumpts)
+            if res != result.not_possible:
+                next.pots = pot
+                next.path = self.path + [(-1,-1,-1)]
+                yield next
+
+    def get_next_tables_multi(self):
+               doubt_assumpts = list()
 
         for (j, targ) in enumerate(self.target):
             assumpt = assumption(targ, '<', Number(0))

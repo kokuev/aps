@@ -1,21 +1,19 @@
 import multiprocessing
 
+finish_task_id = 0
+
 def worker(q_in, q_out):
 	while True:
-		num, obj = q_in.get()
-		if not num: break
+		task_id, obj = q_in.get()
+		if task_id == finish_task_id: break
 
 		i = 1
 		for x in obj.get_next_tables():
-			q_out.put((num, i, x))
+			q_out.put((task_id, i, x))
 			i += 1
 
 		l = i - 1
-		q_out.put( (num, 0, l) )
-
-
-def _dict_to_list(d):
-	return [d[x] for x in sorted(d)]
+		q_out.put( (task_id, 0, l) )
 
 def make_solution(r):
 	t, d = r
@@ -74,7 +72,7 @@ def get_solution(table, m):
 			to_be_solved -= 1
 			if to_be_solved == 0:
 				for x in range(cpu_count):
-					tasks.put( (0, None) )
+					tasks.put( (finish_task_id, None) )
 				break
 		else:
 			place_table(ret, solution, task_id, next_id, next_table)
