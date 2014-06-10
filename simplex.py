@@ -160,7 +160,7 @@ class simplex_table:
 
     def get_next_tables_by_row(self, j, assumps):
         for i in range(self.amount_of_equations):
-            if j in self.basis: continue
+            #if j in self.basis: continue
             assumps2 = list()
             assumps2.append(assumption(self.limits[i][j], '>', Number(0)))
 
@@ -186,6 +186,7 @@ class simplex_table:
             doubt_assumpts.append((j, targ))
 
         for j, targ in doubt_assumpts:
+            if j in self.basis: continue
             assumpts = list()
             for i, a in doubt_assumpts:
                 if i < j:
@@ -220,8 +221,48 @@ class simplex_table:
                 next.path = self.path + [(-1,-1,-1)]
                 yield next
 
+
+    def get_next_tables_multi_by_column_and_row(self, assumpts, j, i):
+        #if i in self.basis: return None
+        assumps2 = list()
+        assumps2.append(assumption(self.limits[i][j], '>', Number(0)))
+
+        or_assumps = self.prepare_or_assumptions(i, j)
+
+        total_assumps = list()
+        for a in or_assumps:
+            total_assumps.append(assumpts + assumps2 + a)
+
+        res, pot, orass = self.test_and_add_or_assumptions(total_assumps)
+        if res == result.not_possible: return None
+        ret = self.get_next_table(i, j, pot)
+        return ret
+
+    def get_next_tables_multi_end_table(self, assumpts):
+        next = simplex_table()
+        next.amount_of_vars = self.amount_of_vars
+        next.amount_of_equations = self.amount_of_equations
+        next.basis = self.basis[:]
+        next.free = self.free[:]
+        next.limits = deepcopy(self.limits)
+        next.target = self.target[:]
+        next.target_free = self.target_free
+
+        res, pot = self.test_and_add_assumptions(assumpts)
+        if res != result.not_possible:
+            next.pots = pot
+            next.path = self.path + [(-1,-1,-1)]
+            return next
+        return None
+
+    def get_next_tables_multi_by_column(self, assumpts):
+        res = self.test_assumtions(assumpts)
+        if res == result.not_possible: return False
+        return True
+
+
     def get_next_tables_multi(self):
-               doubt_assumpts = list()
+        doubt_assumpts = list()
 
         for (j, targ) in enumerate(self.target):
             assumpt = assumption(targ, '<', Number(0))
@@ -230,6 +271,7 @@ class simplex_table:
             doubt_assumpts.append((j, targ))
 
         for j, targ in doubt_assumpts:
+            if j in self.basis: continue
             assumpts = list()
             for i, a in doubt_assumpts:
                 if i < j:
@@ -239,27 +281,11 @@ class simplex_table:
                 else:
                     assumpts.append(assumption(targ, '<=', a ) )
 
-            res = self.test_assumtions(assumpts)
-            if res == result.not_possible: continue
-            for table in self.get_next_tables_by_row(j, assumpts):
-                yield table
+            yield( (j, assumpts) )
 
         if len(doubt_assumpts) > 0:
             assumpts = list()
             for i, a in doubt_assumpts:
                 assumpts.append(assumption(a, '>=', Number(0) ) )
 
-            next = simplex_table()
-            next.amount_of_vars = self.amount_of_vars
-            next.amount_of_equations = self.amount_of_equations
-            next.basis = self.basis[:]
-            next.free = self.free[:]
-            next.limits = deepcopy(self.limits)
-            next.target = self.target[:]
-            next.target_free = self.target_free
-
-            res, pot = self.test_and_add_assumptions(assumpts)
-            if res != result.not_possible:
-                next.pots = pot
-                next.path = self.path + [(-1,-1,-1)]
-                yield next
+            yield ( (-1, assumpts) )
