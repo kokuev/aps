@@ -16,14 +16,14 @@ def worker(q_in, q_out, to_be_solved):
             continue
 
         if row == None: # column is known, row in unknown
-            """if column == -1:
+            if column == -1:
                 ret = obj.get_next_tables_multi_end_table(data)
                 if ret:
                     i = obj.amount_of_equations * (obj.amount_of_equations - 1) + (obj.amount_of_vars - 1) + 1
                     q_out.put( (task_id, i, ret) )
 
                 q_out.put((task_id, None, None))
-                continue"""
+                continue
 
             if obj.get_next_tables_multi_by_column(data) == True:
                 for i in range(obj.amount_of_equations):
