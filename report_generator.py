@@ -67,6 +67,7 @@ def main():
     #tr = tex_page_renderer()
     #full_add_nodes(tr, solution)
     #tr.compile(report_full_file_name)
+
     tr = tex_image_renderer()
     dr = dot_renderer()
     add_nodes(tr, dr, solution)

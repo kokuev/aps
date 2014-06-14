@@ -212,7 +212,6 @@ def decompose(assumpt):
     return get_intervals(poly, assumpt.sign, roots, minimum)
 
 if __name__ == "__main__":
-    from expression import linear
     from sympy import Number, Symbol
     """print(decompose(assumption(linear(4)*linear('x') , '>', linear(2))))
     print(decompose(assumption(linear(4)*linear('x') , '>', linear(-2))))

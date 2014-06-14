@@ -5,18 +5,23 @@ import simplex
 from sympy.parsing.sympy_parser import parse_expr
 import pickle
 
-def get_solution(table, ttl):
+from multi_task import get_solution
+
+def get_solution_old(table, ttl):
     if ttl == 0: return table, list()
     next_tables = list()
     for x in table.get_next_tables():
-        next_tables.append(get_solution(x, ttl - 1))
+        next_tables.append(get_solution_old(x, ttl - 1))
     if len(next_tables) == 0:
         table.make_solution()
     return table, next_tables
 
 class simplex_task:
-    def calculate(self):
-        self.solution = get_solution(self.root_table, 5)
+    def calculate(self, m):
+        if m == None:
+            self.solution = get_solution_old(self.root_table, 100)
+        else:
+            self.solution = get_solution(self.root_table, m)
 
     def check(self, limits, free, target_free, target, basis, assumptions):
         # TODO: some checks =)

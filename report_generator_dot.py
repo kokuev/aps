@@ -8,8 +8,11 @@ import shutil
 dot_path = '/opt/local/bin/dot'
 
 dot_one_node_lonely = """n{} [label=<<table border="0"><tr border="0"><td border="0"><img src="{}"/></td></tr></table>>];\n"""
+dot_one_node_lonely_ = """n{} [label=<<table border="0"><tr border="0"><td border="0"></td></tr></table>>];\n"""
 dot_one_node = """n{} [label=<<table border="0"><tr border="0"><td border="0"><img src="{}"/></td></tr></table>>]; n{} -> n{} {};\n"""
 dot_one_node_solution = """n{} [label=<<table border="0"><tr border="0"><td border="0"><img scale="true" src="{}"/></td></tr><tr border="0"><td border="0" height="20"></td></tr><tr border="0"><td border="0" align="left"><img src="{}"/></td></tr></table>>]; n{} -> n{} {};\n"""
+dot_one_node_ = """n{} [label=<<table border="0"><tr border="0"><td border="0"></td></tr></table>>]; n{} -> n{} {};\n"""
+dot_one_node_solution_ = """n{} [label=<<table border="0"><tr border="0"><td border="0"></td></tr><tr border="0"><td border="0" height="20"></td></tr><tr border="0"><td border="0" align="left"><img src="{}"/></td></tr></table>>]; n{} -> n{} {};\n"""
 dot_pre = """digraph solution {
 node [shape=box];
 """
@@ -33,7 +36,9 @@ class dot_renderer:
         os.removedirs(self.dir)
 
     def add_node_lonely(self, i, tableimgpath):
-        self.dot_file.write(dot_one_node_lonely.format(i, tableimgpath))
+        self.dot_file.write(dot_one_node_lonely_.format(i)) # w/o tables
+        #self.dot_file.write(dot_one_node_lonely.format(i, tableimgpath))
+
 
     def _add_node(self, i, pid, tableimgpath, c_img_path, np):
         arc = ''
@@ -55,11 +60,14 @@ class dot_renderer:
 
     def add_node(self, i, pid, tableimgpath,c_img_path, np):
         arc = self._add_node(i, pid, tableimgpath, c_img_path, np)
-        self.dot_file.write(dot_one_node.format(i, tableimgpath, pid, i, arc))
+        self.dot_file.write(dot_one_node_.format(i, pid, i, arc)) # w/o tables
+        #self.dot_file.write(dot_one_node.format(i, tableimgpath, pid, i, arc))
 
     def add_node_solution(self, i, pid, tableimgpath, solutionimagepath, c_img_path, np):
         arc = self._add_node(i, pid, tableimgpath, c_img_path, np)
-        self.dot_file.write(dot_one_node_solution.format(i, tableimgpath, solutionimagepath, pid, i, arc))
+        self.dot_file.write(dot_one_node_solution_.format(i, solutionimagepath, pid, i, arc)) # w/o tables
+        #self.dot_file.write(dot_one_node_solution.format(i, tableimgpath, solutionimagepath, pid, i, arc))
+
 
     def compile(self, result_file_name):
         self.dot_file.write(dot_post)

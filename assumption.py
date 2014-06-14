@@ -13,7 +13,7 @@ class test_result:
 
 def test_expr_on_finite(exp):
     for x in exp.atoms(Number):
-        if x.is_finite == False:
+        if x.is_finite == False and x.is_nonzero:
             return False
     return None
 
@@ -85,70 +85,9 @@ class assumption:
                 raise Exception('unknown assumption')
         return result.possible
 
-        """if self.exp.denominator_is_zero(): return result.not_possible
-        if self.exp.is_calculatable():
-            value = self.exp.calculate()
-            if self.sign == '>':
-                if value > 0: return result.correct
-                else: return result.not_possible
-            elif self.sign == '>=':
-                if value >= 0: return result.correct
-                else: return result.not_possible
-            elif self.sign == '==':
-                if value == 0: return result.correct
-                else: return result.not_possible
-            elif self.sign == '!=':
-                if value != 0: return result.correct
-                else: return result.not_possible
-            else:
-                raise Exception('unknown assumption')
-        else: return result.possible"""
-
-    """def isobjects(self, assumpt):
-        if self.exp == assumpt.exp:
-            if self.sign == assumpt.sign: return test_result.not_objects
-            if (self.sign, assumpt.sign) == ('>', '>=') or (self.sign, assumpt.sign) == ('>=', '>'): return test_result.not_objects
-            return test_result.objects
-        elif self.exp == -assumpt.exp:
-            if (self.sign, assumpt.sign) == ('>=', '>='): return test_result.not_objects
-            if (self.sign, assumpt.sign) == ('>', '>=') or (self.sign, assumpt.sign) == ('>=', '>'): return test_result.objects
-            if self.sign == assumpt.sign: return test_result.objects
-            return test_result.not_objects
-
-        return test_result.not_objects
-
-    def is_objects(self, assumpt):
-        signs = (self.sign, assumpt.sign)
-        if self.exp == assumpt.exp:
-            if signs == ('>', '==') or signs == ('==', '>'): return test_result.objects
-            if signs == ('==', '!=') or signs == ('!=', '=='): return test_result.objects
-            return test_result.not_objects
-        elif self.exp == -assumpt.exp:
-            if signs == ('>', '>'): return test_result.objects
-            if signs == ('>', '>=') or signs == ('>=', '>'): return test_result.objects
-            if signs == ('>', '==') or signs == ('==', '>'): return test_result.objects
-            if signs == ('==', '!=') or signs == ('!=', '=='): return test_result.objects
-            return test_result.not_objects
-        return test_result.not_objects"""
-
 if __name__ == "__main__":
     from sympy.parsing.sympy_parser import parse_expr
-    #a = linear('a')
-    #b = linear(2.)*a*a + linear(-5.)*a + linear(3)
-    #_try_(b)
-    #b = linear(4.)*a*a + linear(4.)*a + linear(1)
-    #_try_(b)
-    #b = linear(4.)*a*a + linear(1.)*a + linear(4)
-    #_try_(b)
 
-    #b = linear(-2.)*a*a + linear(5.)*a + linear(-3)
-    #_try_(b)
-    #b = linear(-4.)*a*a + linear(-4.)*a + linear(-1)
-    #_try_(b)
-    #b = linear(-4.)*a*a + linear(-1.)*a + linear(-4)
-    #_try_(b)
-    #a = assumption( (expr(-20)-expr(30)*expr('a')+expr(10.)*expr('b'))/(expr(4)-expr(2)*expr('a')+expr(-6)*expr('a')*expr('a')), '>=', expr(0))
-    #print(a)
     a = parse_expr('3*a')
     b = parse_expr('5*a - 2*a - 3')
     c = assumption(b, '>', a)
