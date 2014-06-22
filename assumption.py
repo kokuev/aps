@@ -38,6 +38,7 @@ class assumption:
         else:
             raise Exception('unknown sign')
         self.exp = self.exp.simplify()
+        self.is_expr_on_finite = test_expr_on_finite(self.exp)
 
 
     def __eq__(self, other):
@@ -66,7 +67,7 @@ class assumption:
         return list(self.exp.atoms(Symbol))
 
     def test(self):
-        if test_expr_on_finite(self.exp) == False: return result.not_possible
+        if self.is_expr_on_finite == False: return result.not_possible
         if self.exp.is_number:
             value = self.exp.n()
             if self.sign == '>':

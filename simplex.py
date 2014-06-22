@@ -73,14 +73,14 @@ class simplex_table:
             neworassumptions.append(assumps)
 
         if len(neworassumptions) == 0:
-            if had_correct: return result.correct, deepcopy(self.pots), None
-            else: return result.not_possible, None, None
+            if had_correct: return result.correct, deepcopy(self.pots)#, None
+            else: return result.not_possible, None#, None
 
-        orass = deepcopy(neworassumptions)
+        #orass = deepcopy(neworassumptions)
         t = deepcopy(self.pots)
         res = t.add_or_assumptions(neworassumptions)
-        if not res: return result.not_possible, None, None
-        return result.possible, t, orass
+        if not res: return result.not_possible, None#, None
+        return result.possible, t#, orass
 
     def get_next_table(self, i, j, pot):
         next = simplex_table()
@@ -132,21 +132,66 @@ class simplex_table:
         return next
 
     def prepare_or_assumptions(self, i, j):
+        non_alternate = list()
         alternate1 = list()
         alternate2 = list()
-        for e in range(self.amount_of_equations):
-            if i == e: continue
-            alternate1.append(
-                [ assumption(self.limits[e][j], '>', Number(0)),
-                  assumption(self.free[i] / self.limits[i][j] ,'<=', self.free[e] / self.limits[e][j]) ])
 
-            alternate2.append(
-                [ assumption(self.limits[e][j], '<=', Number(0)) ])
+        for e in range(i):
+            assumpts1 = [assumption(self.limits[e][j], '>', Number(0)),
+                  assumption(self.free[i] / self.limits[i][j] ,'<=', self.free[e] / self.limits[e][j]) ]
+            possib1, assumpts1 = _filter_possible(assumpts1)
+
+            assumpts2 = [ assumption(self.limits[e][j], '<=', Number(0)) ]
+            possib2, assumpts2 = _filter_possible(assumpts2)
+
+            if possib1 == result.correct and possib2 != result.not_possible:
+                continue
+            elif possib2 == result.correct and possib1 != result.not_possible:
+                continue
+            elif possib1 == result.possible and possib2 == result.possible:
+                alternate1.append( assumpts1 )
+                alternate2.append( assumpts2 )
+            elif possib1 == result.possible:
+                non_alternate.extend( assumpts1 )
+            elif possib2 == result.possible:
+                non_alternate.extend( assumpts2 )
+            elif possib1 == result.not_possible and possib2 == result.not_possible:
+                return list()
+
+
+        for e in range(i + 1, self.amount_of_equations):
+            assumpts1 = [assumption(self.limits[e][j], '>', Number(0)),
+                  assumption(self.free[i] / self.limits[i][j] ,'<', self.free[e] / self.limits[e][j]) ]
+            possib1, assumpts1 = _filter_possible(assumpts1)
+
+            assumpts2 = [ assumption(self.limits[e][j], '<=', Number(0)) ]
+            possib2, assumpts2 = _filter_possible(assumpts2)
+
+            if possib1 == result.correct and possib2 != result.not_possible:
+                continue
+            elif possib2 == result.correct and possib1 != result.not_possible:
+                continue
+            elif possib1 == result.possible and possib2 == result.possible:
+                alternate1.append( assumpts1 )
+                alternate2.append( assumpts2 )
+            elif possib1 == result.possible:
+                non_alternate.extend( assumpts1 )
+            elif possib2 == result.possible:
+                non_alternate.extend( assumpts2 )
+            elif possib1 == result.not_possible and possib2 == result.not_possible:
+                return list()
+            else:
+                raise "WTF?"
+
 
         or_assumps = list()
         size = len(alternate1)
-        s = "{0:0>" + str(size) + "b}"
 
+        if size == 0:
+            or_assumps.append(non_alternate)
+            return or_assumps
+
+        s = "{0:0>" + str(size) + "b}"
         for i in range(0, 2**size):
             ret = list(s.format(i))
             current = list()
@@ -154,7 +199,10 @@ class simplex_table:
                 if r == '0': current += deepcopy(alternate1[i])
                 else: current += deepcopy(alternate2[i])
 
+            current.extend(deepcopy(non_alternate))
             or_assumps.append(current)
+
+        #or_assumps = [deepcopy(non_alternate) + l for l in _or_assumps]
 
         return or_assumps
 
@@ -170,7 +218,8 @@ class simplex_table:
             for a in or_assumps:
                 total_assumps.append(assumps + assumps2 + a)
 
-            res, pot, orass = self.test_and_add_or_assumptions(total_assumps)
+            #res, pot, orass = self.test_and_add_or_assumptions(total_assumps)
+            res, pot = self.test_and_add_or_assumptions(total_assumps)
             if res == result.not_possible: continue
             ret = self.get_next_table(i, j, pot)
             #ret.debug_assumps = orass
@@ -233,7 +282,8 @@ class simplex_table:
         for a in or_assumps:
             total_assumps.append(assumpts + assumps2 + a)
 
-        res, pot, orass = self.test_and_add_or_assumptions(total_assumps)
+        #res, pot, orass = self.test_and_add_or_assumptions(total_assumps)
+        res, pot = self.test_and_add_or_assumptions(total_assumps)
         if res == result.not_possible: return None
         ret = self.get_next_table(i, j, pot)
         return ret

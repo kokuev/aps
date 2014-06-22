@@ -19,7 +19,7 @@ def get_solution_old(table, ttl):
 class simplex_task:
     def calculate(self, m):
         if m == None:
-            self.solution = get_solution_old(self.root_table, 100)
+            self.solution = get_solution_old(self.root_table, 50)
         else:
             self.solution = get_solution(self.root_table, m)
 
