@@ -144,10 +144,16 @@ class simplex_table:
             assumpts2 = [ assumption(self.limits[e][j], '<=', Number(0)) ]
             possib2, assumpts2 = _filter_possible(assumpts2)
 
-            if possib1 == result.correct and possib2 != result.not_possible:
-                continue
-            elif possib2 == result.correct and possib1 != result.not_possible:
-                continue
+            if possib1 == result.correct:
+                if possib2 != result.not_possible:
+                    raise "WTF?"
+                else:
+                    continue
+            elif possib2 == result.correct:
+                if possib1 != result.not_possible:
+                    raise "WTF?"
+                else:
+                    continue
             elif possib1 == result.possible and possib2 == result.possible:
                 alternate1.append( assumpts1 )
                 alternate2.append( assumpts2 )
@@ -157,6 +163,8 @@ class simplex_table:
                 non_alternate.extend( assumpts2 )
             elif possib1 == result.not_possible and possib2 == result.not_possible:
                 return list()
+            else:
+                raise "WTF?"
 
 
         for e in range(i + 1, self.amount_of_equations):
@@ -167,10 +175,16 @@ class simplex_table:
             assumpts2 = [ assumption(self.limits[e][j], '<=', Number(0)) ]
             possib2, assumpts2 = _filter_possible(assumpts2)
 
-            if possib1 == result.correct and possib2 != result.not_possible:
-                continue
-            elif possib2 == result.correct and possib1 != result.not_possible:
-                continue
+            if possib1 == result.correct:
+                if possib2 != result.not_possible:
+                    raise "WTF?"
+                else:
+                    continue
+            elif possib2 == result.correct:
+                if possib1 != result.not_possible:
+                    raise "WTF?"
+                else:
+                    continue
             elif possib1 == result.possible and possib2 == result.possible:
                 alternate1.append( assumpts1 )
                 alternate2.append( assumpts2 )
