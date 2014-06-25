@@ -14,7 +14,7 @@
     <file path="/_theorypots.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1360540286388" ignored="false" />
     <file path="/report_generator_to_tex.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361753094103" ignored="false" />
     <file path="/theorypots_intervals.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361744074211" ignored="false" />
-    <file path="/task.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1403480967730" ignored="false" />
+    <file path="/task.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1403644844958" ignored="false" />
     <file path="/fragment.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361733438729" ignored="false" />
     <file path="/interval.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1361733522044" ignored="false" />
     <file path="/report_generator.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402833247346" ignored="false" />
@@ -32,7 +32,7 @@
     <file path="/aps.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402239576671" ignored="false" />
     <file path="$USER_HOME$/temp/water/main.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1399414137213" ignored="false" />
     <file path="/main.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1399414055991" ignored="false" />
-    <file path="/multi_task.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402435231728" ignored="false" />
+    <file path="/multi_task.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1403730855252" ignored="false" />
     <file path="/task_3x3.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402240414360" ignored="false" />
     <file path="/task_2x3.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402240484584" ignored="false" />
     <file path="/task_2x2_4.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402240538695" ignored="false" />
@@ -71,7 +71,25 @@
       <file leaf-file-name="task.yaml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/task.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="29" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
+            <state line="6" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aps.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="20" selection-start="698" selection-end="698" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task_2x2.yaml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks/task_2x2.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="0" selection-end="163" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,7 +136,7 @@
       <file leaf-file-name="multi_task.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/multi_task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="24" selection-start="957" selection-end="957" vertical-scroll-proportion="0.5173913">
+            <state line="36" column="76" selection-start="1393" selection-end="1393" vertical-scroll-proportion="0.7394636">
               <folding />
             </state>
           </provider>
@@ -136,7 +154,6 @@
       <list>
         <option value="$PROJECT_DIR$/tasks/task_2x2_c1.yaml" />
         <option value="$PROJECT_DIR$/tasks/task_2x2_c1c2.yaml" />
-        <option value="$PROJECT_DIR$/multi_task.py" />
         <option value="$PROJECT_DIR$/tasks/task8_9.yaml" />
         <option value="$PROJECT_DIR$/tasks/task8_8.yaml" />
         <option value="$PROJECT_DIR$/tasks/task8_7.yaml" />
@@ -148,8 +165,9 @@
         <option value="$PROJECT_DIR$/tasks/task8_10.yaml" />
         <option value="$PROJECT_DIR$/assumption.py" />
         <option value="$PROJECT_DIR$/tasks/task8_3.yaml" />
-        <option value="$PROJECT_DIR$/tasks/task.yaml" />
         <option value="$PROJECT_DIR$/simplex.py" />
+        <option value="$PROJECT_DIR$/tasks/task.yaml" />
+        <option value="$PROJECT_DIR$/multi_task.py" />
       </list>
     </option>
   </component>
@@ -202,20 +220,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tasks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -224,7 +228,7 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="last_opened_file_path" value="/opt/local/Library/Frameworks/Python.framework/Versions/3.3/bin/python3.3" />
@@ -234,6 +238,13 @@
   </component>
   <component name="PublishConfig">
     <servers>
+      <server id="bc87fd18-b07c-4077-ad47-d42a08d7dffb">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
       <server id="dev">
         <serverdata>
           <mappings>
@@ -274,7 +285,7 @@
       <module name="aps" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aps.py" />
-      <option name="PARAMETERS" value="tasks/task.yaml result/task.pck -m 1" />
+      <option name="PARAMETERS" value="tasks/task.yaml result/task.pck -m1" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonCover" />
       <RunnerSettings RunnerId="PythonRunner" />
@@ -644,11 +655,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34162897" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.7641196" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19461444" sideWeight="0.18584071" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23378213" sideWeight="0.8122172" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23378213" sideWeight="0.62217194" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37217194" sideWeight="0.5758874" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19461444" sideWeight="0.30973452" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18778281" sideWeight="0.44002447" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18778281" sideWeight="0.5599755" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37782806" sideWeight="0.44002447" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37782806" sideWeight="0.5599755" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -732,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="30" selection-start="599" selection-end="599" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tasks/task8_4.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
@@ -799,13 +803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/task_2x2.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="163" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tasks/task_example.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0">
@@ -820,13 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/task.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="29" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simplex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="195" column="29" selection-start="7051" selection-end="7051" vertical-scroll-proportion="0.0">
@@ -834,9 +824,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task_2x2.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="0" selection-end="163" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="20" selection-start="698" selection-end="698" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/multi_task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="24" selection-start="957" selection-end="957" vertical-scroll-proportion="0.5173913">
+        <state line="36" column="76" selection-start="1393" selection-end="1393" vertical-scroll-proportion="0.7394636">
           <folding />
         </state>
       </provider>

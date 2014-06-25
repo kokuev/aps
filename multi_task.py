@@ -21,6 +21,7 @@ def worker(q_in, q_out, to_be_solved):
                 if ret:
                     i = obj.amount_of_equations * (obj.amount_of_equations - 1) + (obj.amount_of_vars - 1) + 1
                     q_out.put( (task_id, i, ret) )
+                    continue
 
                 q_out.put((task_id, None, None))
                 continue
@@ -37,9 +38,9 @@ def worker(q_in, q_out, to_be_solved):
         if ret:
             num = obj.amount_of_equations * row + column
             q_out.put((task_id, num, ret))
-        else:
-            q_out.put((task_id, None, None))
-        #to_be_solved.value -= 1
+            continue
+
+        q_out.put((task_id, None, None))
         continue
 
 def make_solution(r):
@@ -96,6 +97,7 @@ def get_solution(table, m):
 
     while True:
         task_id, next_id, next_table = result.get()
+        #print(task_id, next_id, next_table, to_be_solved.value)
         with to_be_solved.get_lock(): to_be_solved.value -= 1
         #if next_table: print(task_id, next_id, to_be_solved.value)
 
