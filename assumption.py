@@ -1,5 +1,5 @@
 #from expression import linear, expr
-from sympy import latex, Symbol, Number
+from sympy import latex, Symbol, Number, zoo, I
 
 class result:
     possible = 0
@@ -13,9 +13,12 @@ class test_result:
 
 def test_expr_on_finite(exp):
     for x in exp.atoms(Number):
-        if x.is_finite == False and x.is_nonzero:
+        if x.is_finite == False and x.is_nonzero == None:
             return False
-    return None
+    if len(exp.atoms(zoo)): return False
+    if len(exp.atoms(I)): return False
+
+    return True
 
 class assumption:
 
@@ -38,7 +41,7 @@ class assumption:
         else:
             raise Exception('unknown sign')
         self.exp = self.exp.simplify()
-        self.is_expr_on_finite = test_expr_on_finite(self.exp)
+        self.is_expr_finite = test_expr_on_finite(self.exp)
 
 
     def __eq__(self, other):
@@ -67,7 +70,7 @@ class assumption:
         return list(self.exp.atoms(Symbol))
 
     def test(self):
-        if self.is_expr_on_finite == False: return result.not_possible
+        if self.is_expr_finite == False: return result.not_possible
         if self.exp.is_number:
             value = self.exp.n()
             if self.sign == '>':
