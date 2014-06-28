@@ -11,4 +11,8 @@ do
 	python3.3 aps.py tasks/$f result/$f.pck -m 3 >> logs/$f.m3.txt;
 	echo $f m4
 	python3.3 aps.py tasks/$f result/$f.pck -m 4 >> logs/$f.m4.txt;
+	echo $f m5
+	python3.3 aps.py tasks/$f result/$f.pck -m 5 >> logs/$f.m5.txt;
+	echo $f m6
+	python3.3 aps.py tasks/$f result/$f.pck -m 6 >> logs/$f.m6.txt;
 done
