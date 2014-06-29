@@ -4,7 +4,3 @@ matrix:
 free: [b_1, 3]
 target: [0, -1 , c_2, 0, 0]
 basis: [2, 3]
-
-#assumptions:
-# - [a, '<' , 0]
-# - [b, '>' , 0]
