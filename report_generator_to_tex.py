@@ -102,8 +102,12 @@ def simplex_table_to_tex_assumptions(table):
         if not bad:
             new_assumps_by_pot.append(new_pot)
 
+    has_curly = True
+    if len(common_assumps) == 0: has_curly = False
+    if len(common_assumps) == 1 and len(new_assumps_by_pot) == 0: has_curly = False
+
     ret = '$$'
-    if len(common_assumps) > 1 or len(new_assumps_by_pot) > 0:
+    if has_curly :# and len(new_assumps_by_pot) != 0: #or len(new_assumps_by_pot) > 0:
         ret += '\\left\\{ \\begin{array}{l}'
     for a in common_assumps:
         ret += a.to_tex() + '\\\\'
@@ -126,7 +130,7 @@ def simplex_table_to_tex_assumptions(table):
 
     #ret += '\\\\ \\mbox{'+ str(count_ops([ x.exp for x in common_assumps ] + [ a.exp for pot in new_assumps_by_pot for a in pot], visual=True) ) + ' ' + str(len(common_assumps) + total_cmp) +'*CMP '+ '} \\\\'
 
-    if len(common_assumps) > 1 or len(new_assumps_by_pot) > 0:
+    if has_curly:
         ret += '\\end{array} \\right.'
 
     ret += '$$'

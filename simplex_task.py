@@ -24,7 +24,13 @@ class simplex_task:
             self.solution = get_solution(self.root_table, m)
 
     def check(self, limits, free, target_free, target, basis, assumptions):
-        # TODO: some checks =)
+        if len(limits) != len(free):
+            print("len(limits) != len(free)")
+            return False
+        for i, row in enumerate(limits):
+            if len(row) != len(target):
+                print("len(row) != len(target) for i =", i)
+                return False
         return True
 
     def set(self, limits, free, target_free, target, basis, assumptions):
