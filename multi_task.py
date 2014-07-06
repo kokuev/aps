@@ -2,6 +2,18 @@ import multiprocessing
 
 finish_task_id = 0
 
+def worker_v1(q_in, q_out, to_be_solved):
+    while True:
+        task_id, column, row, data, obj = q_in.get()
+        if task_id == finish_task_id: break
+
+        i = 1
+        for x in obj.get_next_tables():
+            q_out.put((task_id, i, x))
+            i += 1
+
+        q_out.put( (task_id, None, None) )
+
 def worker(q_in, q_out, to_be_solved):
     while True:
         task_id, column, row, data, obj = q_in.get()

@@ -32,7 +32,7 @@
     <file path="/aps.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402239576671" ignored="false" />
     <file path="$USER_HOME$/temp/water/main.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1399414137213" ignored="false" />
     <file path="/main.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1399414055991" ignored="false" />
-    <file path="/multi_task.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1403730855252" ignored="false" />
+    <file path="/multi_task.py" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1404665088283" ignored="false" />
     <file path="/task_3x3.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402240414360" ignored="false" />
     <file path="/task_2x3.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402240484584" ignored="false" />
     <file path="/task_2x2_4.yaml" changelist="fa04076e-133f-40b6-9098-e35b6cf360d9" time="1402240538695" ignored="false" />
@@ -69,19 +69,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="task.yaml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tasks/task.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="37" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="simplex_task.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplex_task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="53" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.0">
+            <state line="22" column="13" selection-start="624" selection-end="624" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -89,10 +80,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="multi_task.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="multi_task.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/multi_task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="0" selection-start="3390" selection-end="3390" vertical-scroll-proportion="0.0">
+            <state line="55" column="16" selection-start="1902" selection-end="1902" vertical-scroll-proportion="0.7504798">
               <folding />
             </state>
           </provider>
@@ -110,16 +101,43 @@
       <file leaf-file-name="aps.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aps.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="16" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0">
+            <state line="19" column="9" selection-start="708" selection-end="708" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="task_2x2_a21b1.yaml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="task_2x2_a21b1.yaml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/task_2x2_a21b1.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="110" selection-end="110" vertical-scroll-proportion="0.2284069">
+            <state line="7" column="0" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task_b_10.yaml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks/task_b_10.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="24" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task_b_9.yaml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks/task_b_9.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="5" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task_b_8.yaml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks/task_b_8.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -143,24 +161,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="simplex.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simplex.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="38" selection-start="1195" selection-end="1195" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="report_generator_dot.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/report_generator_dot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="16" selection-start="1952" selection-end="1952" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -171,9 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tasks/task_2x2_a11b2c1.yaml" />
-        <option value="$PROJECT_DIR$/tasks/task_2x2_a11b2c2.yaml" />
-        <option value="$PROJECT_DIR$/tasks/task_2x2_a11c1.yaml" />
         <option value="$PROJECT_DIR$/tasks/task_2x2_a11c2.yaml" />
         <option value="$PROJECT_DIR$/tasks/task_2x2_b1.yaml" />
         <option value="$PROJECT_DIR$/tasks/task_2x2_b1b2.yaml" />
@@ -187,6 +184,9 @@
         <option value="$PROJECT_DIR$/tasks/task.yaml" />
         <option value="$PROJECT_DIR$/tasks/task_search_big.yaml" />
         <option value="$PROJECT_DIR$/tasks/task_2x2_a21b1.yaml" />
+        <option value="$PROJECT_DIR$/tasks/task_b_10.yaml" />
+        <option value="$PROJECT_DIR$/tasks/task_b_9.yaml" />
+        <option value="$PROJECT_DIR$/multi_task.py" />
       </list>
     </option>
   </component>
@@ -236,20 +236,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="aps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tasks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -769,27 +755,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tasks/task_2x2.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.19577736">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/report_generator_to_tex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="16" selection-start="4373" selection-end="4373" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/task_3x3.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="21" selection-start="125" selection-end="125" vertical-scroll-proportion="0.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tasks/task_search.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="29" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
@@ -832,32 +797,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simplex_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="53" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/interval.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multi_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="3390" selection-end="3390" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="16" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -878,7 +820,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tasks/task_2x2_a21b1.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="110" selection-end="110" vertical-scroll-proportion="0.2284069">
+        <state line="7" column="0" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task_b_8.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task_b_10.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task_b_9.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="5" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="9" selection-start="708" selection-end="708" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplex_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="13" selection-start="624" selection-end="624" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multi_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="16" selection-start="1902" selection-end="1902" vertical-scroll-proportion="0.7504798">
           <folding />
         </state>
       </provider>
