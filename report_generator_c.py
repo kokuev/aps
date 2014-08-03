@@ -10,74 +10,7 @@ report_c_file_name = 'reports/tree.c'
 
 
 def simplex_table_to_c_assumptions(table):
-    if not table.pots.is_valid(): return ('', [])
-    assumps_by_pot = list()
-    all_assumps = list()
-    for pot in table.pots.pots:
-        assumps = list()
-        for s in pot.new_symbol_intervals:
-            assumps += pot.new_symbol_intervals[s].get_assumptions(s)
-        assumps += pot.new_assumptions
-        assumps_by_pot.append(assumps)
-        all_assumps += assumps
-
-    n = len(assumps_by_pot)
-    common_assumps = list()
-    while len(all_assumps) > 0:
-        current_assumpt = all_assumps[0]
-        new_all_assumps = list()
-        i = 0
-        for assumpt in all_assumps:
-            if assumpt == current_assumpt:
-                i += 1
-            else:
-                new_all_assumps.append(assumpt)
-        all_assumps = new_all_assumps
-        if i == n:
-            common_assumps.append(current_assumpt)
-
-    new_assumps_by_pot = list()
-    for pot in assumps_by_pot:
-        new_pot = list()
-        for a in pot:
-            common = False
-            for ca in common_assumps:
-                if a == ca:
-                    common = True
-                    break
-            if not common:
-                new_pot.append(a)
-
-        if len(new_pot) == 0: continue
-
-        bad = False
-        for pot in new_assumps_by_pot:
-            diff = False
-            for a1 in new_pot:
-                found = False
-                for a2 in pot:
-                    if a1 == a2:
-                        found = True
-                        break
-                if not found:
-                    diff = True
-                    break
-            for a1 in pot:
-                found = False
-                for a2 in new_pot:
-                    if a1 == a2:
-                        found = True
-                        break
-                if not found:
-                    diff = True
-                    break
-            if not diff:
-                bad = True
-                break
-
-        if not bad:
-            new_assumps_by_pot.append(new_pot)
-
+    common_assumps, new_assumps_by_pot = table.pots.get_common_and_not_assumptions()
     ret = ''
 
     common_assumpt_text = list()
@@ -97,7 +30,8 @@ def simplex_table_to_c_assumptions(table):
     ret = " && ".join(common_assumpt_text)
 
     if len(pots_assumpt_text) > 0:
-        ret += ' && ' + '(' + " || ".join(pots_assumpt_text) + ')'
+        if len(common_assumps): ret += ' && '
+        ret +=  '(' + " || ".join(pots_assumpt_text) + ')'
 
     return ret
 
@@ -117,14 +51,17 @@ def out_table(table, level):
     t, chs = table
     if not t.solution:
         ret = ''
+        first = True
         for ch in chs:
             ch_t, ch_chs = ch
-            ret += "%sif ( %s ) \n" % ("    "*level, simplex_table_to_c_assumptions(ch_t))
+            ret += "%sif ( %s ) \n" % (first and "    "*level or " ", simplex_table_to_c_assumptions(ch_t))
             ret += "%s{\n" % ("    "*level)
             ret += "%s" % out_table(ch, level + 1)
             ret += "%s}\n" % ("    "*level)
             ret += "%selse " % ("    "*level)
-        ret += "%sreturn 0;\n" % ("    "*level)
+            first = False
+        #ret += "%sreturn 0;\n" % ("    "*level)
+        ret += "return 0;\n"
         return ret
     else:
         var, target = t.solution
@@ -184,7 +121,7 @@ def generate_input(solution, init = False):
 
     ret = ''
     for symb in symbols:
-        ret += "\tdouble " + ccode(symb)
+        ret += "    " + "double " + ccode(symb)
         if init: ret += " = in->" + ccode(symb) + ";\n"
         else: ret += ";\n"
 
@@ -194,9 +131,9 @@ def generate_output(solution):
     t, chs = solution
     ret = ''
     for i in range(t.amount_of_vars):
-        ret += "\tdouble x" + str(i) + ";\n"
+        ret += "    " + "double x" + str(i) + ";\n"
 
-    ret += "\tdouble psi;"
+    ret += "    " + "double psi;"
     return ret
 
 def main():

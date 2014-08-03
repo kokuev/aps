@@ -221,6 +221,79 @@ class theorypots:
             ret += str(pot) + '\n'
         return ret
 
+    def get_common_and_not_assumptions(self):
+        if not self.is_valid(): return ('', [])
+        assumps_by_pot = list()
+        all_assumps = list()
+        for pot in self.pots:
+            assumps = list()
+            for s in pot.new_symbol_intervals:
+                assumps += pot.new_symbol_intervals[s].get_assumptions(s)
+            assumps += pot.new_assumptions
+            assumps_by_pot.append(assumps)
+            all_assumps += assumps
+
+        n = len(assumps_by_pot)
+        common_assumps = list()
+        while len(all_assumps) > 0:
+            current_assumpt = all_assumps[0]
+            new_all_assumps = list()
+            i = 0
+            for assumpt in all_assumps:
+                if assumpt == current_assumpt:
+                    i += 1
+                else:
+                    new_all_assumps.append(assumpt)
+            all_assumps = new_all_assumps
+            if i == n:
+                common_assumps.append(current_assumpt)
+
+        new_assumps_by_pot = list()
+        for pot in assumps_by_pot:
+            new_pot = list()
+            for a in pot:
+                common = False
+                for ca in common_assumps:
+                    if a == ca:
+                        common = True
+                        break
+                if not common:
+                    new_pot.append(a)
+
+            if len(new_pot) == 0: continue
+
+            bad = False
+            for pot in new_assumps_by_pot:
+                diff = False
+                for a1 in new_pot:
+                    found = False
+                    for a2 in pot:
+                        if a1 == a2:
+                            found = True
+                            break
+                    if not found:
+                        diff = True
+                        break
+                for a1 in pot:
+                    found = False
+                    for a2 in new_pot:
+                        if a1 == a2:
+                            found = True
+                            break
+                    if not found:
+                        diff = True
+                        break
+                if not diff:
+                    bad = True
+                    break
+
+            if not bad:
+                new_assumps_by_pot.append(new_pot)
+
+        return (common_assumps, new_assumps_by_pot)
+
+
+
 import time
 
 if __name__ == "__main__":

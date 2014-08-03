@@ -27,13 +27,13 @@ class dot_renderer:
     def __init__(self):
         self.dir = tempfile.mkdtemp()
         cwd = os.getcwd()
-        os.chdir(os.path.abspath(os.path.dirname(self.dir)))
+        os.chdir(os.path.abspath(self.dir))
         self.dot_file = open(self.dot_filename, 'w')
         self.dot_file.write(dot_pre)
         os.chdir(cwd)
 
     def __del__(self):
-        os.removedirs(self.dir)
+        shutil.rmtree(self.dir)
 
     def add_node_lonely(self, i, tableimgpath):
         self.dot_file.write(dot_one_node_lonely_.format(i)) # w/o tables
@@ -73,8 +73,8 @@ class dot_renderer:
         self.dot_file.write(dot_post)
         self.dot_file.close()
         cwd = os.getcwd()
-        os.chdir(os.path.abspath(os.path.dirname(self.dir)))
+        os.chdir(os.path.abspath(self.dir))
         subprocess.call((dot_path, '-Tpng','-o', self.result_filename, self.dot_filename))
         os.chdir(cwd)
-        shutil.copyfile(os.path.join(os.path.dirname(self.dir), self.result_filename), os.path.abspath(result_file_name))
+        shutil.copyfile(os.path.join(os.path.abspath(self.dir), self.result_filename), os.path.abspath(result_file_name))
         #subprocess.call((dot_path, '-Teps','-o', self.result_filename, self.dot_filename))

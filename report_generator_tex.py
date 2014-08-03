@@ -39,17 +39,17 @@ class tex_image_renderer:
     def __init__(self):
         self.dir = tempfile.mkdtemp()
         cwd = os.getcwd()
-        os.chdir(os.path.abspath(os.path.dirname(self.dir)))
+        os.chdir(os.path.abspath(self.dir))
         self.tex_file = open(self.tex_filename, 'w')
         self.tex_file.write(tex_preamble)
         os.chdir(cwd)
         self.counter = 0
     def __del__(self):
-        os.removedirs(self.dir)
+        shutil.rmtree(self.dir)
     def _put(self, x):
         self.tex_file.write(x + '\\newpage \n')
         self.counter += 1
-        return os.path.join(os.path.dirname(self.dir),self.image_name.format(self.counter))
+        return os.path.join(os.path.abspath(self.dir),self.image_name.format(self.counter))
     def put_formula(self, formula):
         return self._put("\\[\n " + formula +"$\n\\] ")
     def put_inline_formula(self, formula):
@@ -61,7 +61,7 @@ class tex_image_renderer:
         self.tex_file.close()
         if self.counter == 0: return
         cwd = os.getcwd()
-        os.chdir(os.path.abspath(os.path.dirname(self.dir)))
+        os.chdir(os.path.abspath(self.dir))
         subprocess.call((tex_path, '', self.tex_filename))
         #subprocess.call((dvips_path, '-E','-i','-j','-V', self.dvi_filename))
         subprocess.call((dvipng_path, '-q9','-T','tight','-D','300','-z9','-bg','transparent','-o', self.image_mask, self.dvi_filename))
@@ -75,13 +75,13 @@ class tex_page_renderer:
     def __init__(self):
         self.dir = tempfile.mkdtemp()
         cwd = os.getcwd()
-        os.chdir(os.path.abspath(os.path.dirname(self.dir)))
+        os.chdir(os.path.abspath(self.dir))
         self.tex_file = open(self.tex_filename, 'w')
         self.tex_file.write(tex_preamble)
         os.chdir(cwd)
 
     def __del__(self):
-        os.removedirs(self.dir)
+        shutil.rmtree(self.dir)
 
     def put_some(self, some):
         self.tex_file.write(some)
@@ -93,8 +93,8 @@ class tex_page_renderer:
         self.put_some("""\\end{document}""")
         self.tex_file.close()
         cwd = os.getcwd()
-        os.chdir(os.path.abspath(os.path.dirname(self.dir)))
+        os.chdir(os.path.abspath(self.dir))
         subprocess.call((tex_path, '-output-format=pdf', self.tex_filename))
         os.chdir(cwd)
-        shutil.copyfile(os.path.join(os.path.dirname(self.dir), self.dvi_filename), os.path.abspath(result_file_name))
-        shutil.copyfile(os.path.join(os.path.dirname(self.dir), self.tex_filename), os.path.abspath(result_file_name + ".tex"))
+        shutil.copyfile(os.path.join(os.path.abspath(self.dir), self.dvi_filename), os.path.abspath(result_file_name))
+        shutil.copyfile(os.path.join(os.path.abspath(self.dir), self.tex_filename), os.path.abspath(result_file_name + ".tex"))
