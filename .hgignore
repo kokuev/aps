@@ -1,6 +1,0 @@
-syntax: glob
-result
-__pycache__
-reports
-logs
-.idea
