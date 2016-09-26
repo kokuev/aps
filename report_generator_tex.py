@@ -6,9 +6,9 @@ import tempfile
 import shutil
 
 if os.name == 'posix':
-    tex_path = '/usr/texbin/latex'
-    dvipng_path = '/usr/texbin/dvipng'
-    dvips_path = '/usr/texbin/dvips'
+    tex_path = '/Library/TeX/texbin/latex'
+    dvipng_path = '/Library/TeX/texbin/dvipng'
+    dvips_path = '/Library/TeX/texbin/dvips'
 else:
     tex_path = 'latex.exe '
     dvipng_path = 'dvipng.exe '
